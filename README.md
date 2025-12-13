@@ -22,6 +22,12 @@ These skills work with Claude Code to enhance software development workflows. Th
 
 **Example**: When you request "Review this code", the `code-quality-review` skill activates and performs a systematic code review.
 
+### System Prompt
+
+For AI agents, use the system prompt at `/SYSTEM_PROMPT_CONCISE.md`.
+
+For detailed implementation and maintenance documentation, see the `/docs` directory.
+
 ## Installation
 
 To use these skills with Claude Code:
@@ -51,11 +57,17 @@ The directory structure should look like:
 │   └── SKILL.md
 ├── collaboration
 │   └── SKILL.md
+├── code-quality-review
+│   └── SKILL.md
 ├── debugging
 │   └── SKILL.md
 ├── ghostty
 │   └── SKILL.md
+├── github-review-publisher
+│   └── SKILL.md
 ├── misc
+│   └── SKILL.md
+├── pr-analysis
 │   └── SKILL.md
 ├── problem-solving
 │   └── SKILL.md
@@ -148,6 +160,24 @@ Modern, keyboard-driven code editor with excellent performance and features.
 Modern terminal emulator with GPU acceleration and extensive customization.
 
 **When to use**: Terminal configuration, customizing terminal behavior, or optimizing terminal workflow.
+
+### PR Analysis
+
+Comprehensive pull request analysis and metadata extraction from GitHub repositories.
+
+**When to use**: Understanding PR changes, analyzing code modifications, or extracting PR context for code reviews.
+
+### Code Quality Review
+
+Systematic code quality analysis with security checks and accurate line number extraction.
+
+**When to use**: Reviewing code changes, applying project standards, or identifying security and quality issues.
+
+### GitHub Review Publisher
+
+Create and publish validated GitHub PR review comments from code quality findings.
+
+**When to use**: Publishing code review comments, creating pending reviews, or managing PR review workflows.
 
 ## Contribution
 
