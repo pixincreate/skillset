@@ -4,7 +4,7 @@
 
 This guide provides comprehensive documentation for implementing and maintaining the skills collection system. It enables any AI agent (Claude Code, OpenAI's tools, GitHub Copilot, or other AI assistants) to effectively utilize the skills collection for enhanced software development capabilities.
 
-For the actual system prompt to use with AI agents, see `/SYSTEM_PROMPT_CONCISE.md`.
+For the actual system prompt to use with AI agents, see `/SYSTEM_PROMPT.md`.
 
 ## Core Instructions
 

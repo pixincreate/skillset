@@ -24,13 +24,36 @@ These skills work with Claude Code to enhance software development workflows. Th
 
 ### System Prompt
 
-For AI agents, use the system prompt at `/SYSTEM_PROMPT_CONCISE.md`.
+For AI agents, use the system prompt at `/SYSTEM_PROMPT.md`.
 
 For detailed implementation and maintenance documentation, see the `/docs` directory.
 
 ## Installation
 
-To use these skills with Claude Code:
+### Option 1: symlink Install (Recommended)
+
+Create a symlink from your repository to Claude:
+
+```bash
+# From the repository root
+./scripts/install.sh
+```
+
+This creates a symlink from `~/.claude/skills` to your repository, making updates trivial.
+
+### Option 2: Plugin Installation
+
+This repository is structured as a Claude Code plugin:
+
+```bash
+# If Claude Code supports plugins
+claude-code plugin install claude-skills-collection
+
+# Or manual configuration
+claude config set plugins.claude-skills-collection /path/to/this/repo
+```
+
+### Option 3: Manual Installation
 
 1. **Clone the repository**:
 
@@ -86,6 +109,14 @@ The directory structure should look like:
 ```
 
 3. **Restart Claude Code** to load the new skills
+
+### Plugin Commands
+
+When installed as a plugin, you can use these commands:
+
+- `/pr-review [PR_NUMBER]` - Complete PR review workflow
+- `/list-skills` - Show all available skills
+- `/skill-info [SKILL_NAME]` - Get details about a skill
 
 ## Skills
 
@@ -188,6 +219,17 @@ Contributions are welcome! Please:
 3. Submit a pull request with clear description
 
 Focus on concise, actionable improvements to existing skills.
+
+## Uninstallation
+
+To remove the skills:
+
+```bash
+# Run the uninstall script
+./scripts/uninstall.sh
+```
+
+This will remove the symlink and restore any backup if found.
 
 ## License
 

@@ -1,0 +1,117 @@
+{
+  "name": "claude-skills-collection",
+  "displayName": "Claude Skills Collection",
+  "description": "Comprehensive software development skills for Claude Code - debugging, architecture, testing, GitHub PR workflows, and more",
+  "version": "1.0.0",
+  "author": "Your Name",
+  "homepage": "https://github.com/pixincreate/claude-skills",
+  "repository": "https://github.com/pixincreate/claude-skills.git",
+  "license": "CC0-1.0",
+  "tags": ["skills", "development", "claude-code", "productivity"],
+  "capabilities": [
+    "cli",
+    "skills"
+  ],
+  "skills": [
+    {
+      "name": "debugging",
+      "description": "Systematic workflow for identifying, isolating, and fixing bugs",
+      "path": "skills/debugging/SKILL.md"
+    },
+    {
+      "name": "architecture",
+      "description": "Software architecture and system design guidance",
+      "path": "skills/architecture/SKILL.md"
+    },
+    {
+      "name": "testing",
+      "description": "Writing effective tests following best practices",
+      "path": "skills/testing/SKILL.md"
+    },
+    {
+      "name": "problem-solving",
+      "description": "Systematic approach for complex technical challenges",
+      "path": "skills/problem-solving/SKILL.md"
+    },
+    {
+      "name": "research",
+      "description": "Systematic technical research and codebase exploration",
+      "path": "skills/research/SKILL.md"
+    },
+    {
+      "name": "misc",
+      "description": "Essential development practices and code quality",
+      "path": "skills/misc/SKILL.md"
+    },
+    {
+      "name": "collaboration",
+      "description": "Effective team collaboration practices",
+      "path": "skills/collaboration/SKILL.md"
+    },
+    {
+      "name": "web-browser",
+      "description": "Web browsing and interaction for unreachable content",
+      "path": "skills/web-browser/SKILL.md"
+    },
+    {
+      "name": "tmux",
+      "description": "Terminal multiplexer for persistent sessions",
+      "path": "skills/tmux/SKILL.md"
+    },
+    {
+      "name": "starship",
+      "description": "Shell prompt configuration and customization",
+      "path": "skills/starship/SKILL.md"
+    },
+    {
+      "name": "zed",
+      "description": "Modern code editor workflows and configuration",
+      "path": "skills/zed/SKILL.md"
+    },
+    {
+      "name": "ghostty",
+      "description": "Terminal emulator configuration and optimization",
+      "path": "skills/ghostty/SKILL.md"
+    },
+    {
+      "name": "pr-analysis",
+      "description": "Pull request analysis and metadata extraction",
+      "path": "skills/pr-analysis/SKILL.md"
+    },
+    {
+      "name": "code-quality-review",
+      "description": "Code quality analysis with security checks",
+      "path": "skills/code-quality-review/SKILL.md"
+    },
+    {
+      "name": "github-review-publisher",
+      "description": "Create validated GitHub PR review comments",
+      "path": "skills/github-review-publisher/SKILL.md"
+    }
+  ],
+  "commands": [
+    {
+      "name": "list-skills",
+      "description": "List all available skills",
+      "path": "commands/list-skills.md"
+    },
+    {
+      "name": "pr-review",
+      "description": "Complete PR review workflow",
+      "path": "commands/pr-review.md"
+    },
+    {
+      "name": "skill-info",
+      "description": "Get information about a specific skill",
+      "path": "commands/skill-info.md"
+    }
+  ],
+  "systemPrompt": {
+    "file": "SYSTEM_PROMPT.md",
+    "version": "1.0.0"
+  },
+  "dependencies": {},
+  "claudeCode": {
+    "minVersion": "1.0.0"
+  }
+}
