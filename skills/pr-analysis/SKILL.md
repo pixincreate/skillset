@@ -1,6 +1,6 @@
 ---
 name: pr-analysis
-description: Fetch and analyze pull request data from GitHub repositories. Use when you need to understand PR changes, review code modifications, or analyze scope of pull requests. Auto-activates for: "analyze PR", "fetch pull request", "get PR details", "what changed in PR", "review PR #123".
+description: "Fetch and analyze pull request data from GitHub repositories. Use when you need to understand PR changes, review code modifications, or analyze scope of pull requests. Auto-activates for: \"analyze PR\", \"fetch pull request\", \"get PR details\", \"what changed in PR\", \"review PR #123\"."
 ---
 
 # PR Analysis Skill

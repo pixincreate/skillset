@@ -1,6 +1,6 @@
 ---
 name: code-quality-review
-description: Perform comprehensive code quality reviews with project-specific standards and security checks. Use when reviewing code changes, PRs, or files for quality issues. Generates issues categorized by severity with accurate line numbers for GitHub API integration.
+description: "Perform comprehensive code quality reviews with project-specific standards and security checks. Use when reviewing code changes, PRs, or files for quality issues. Generates issues categorized by severity with accurate line numbers for GitHub API integration."
 ---
 
 # Code Quality Review Skill

@@ -1,6 +1,6 @@
 ---
 name: ghostty
-description: Configure and use Ghostty terminal emulator effectively. Use when setting up Ghostty, customizing terminal behavior, managing themes, or optimizing terminal workflow. Auto-activates for: "configure ghostty", "ghostty theme", "terminal font", "ghostty keybindings".
+description: "Configure and use Ghostty terminal emulator effectively. Use when setting up Ghostty, customizing terminal behavior, managing themes, or optimizing terminal workflow. Auto-activates for: \"configure ghostty\", \"ghostty theme\", \"terminal font\", \"ghostty keybindings\"."
 ---
 
 # Ghostty Skill

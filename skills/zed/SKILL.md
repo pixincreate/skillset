@@ -1,6 +1,6 @@
 ---
 name: zed
-description: Use Zed editor effectively with workflows for navigation, editing, and project management. Use when working with Zed, managing projects, using keybindings, or configuring themes. Auto-activates for: "open in zed", "split pane", "search in project", "format code".
+description: "Use Zed editor effectively with workflows for navigation, editing, and project management. Use when working with Zed, managing projects, using keybindings, or configuring themes. Auto-activates for: \"open in zed\", \"split pane\", \"search in project\", \"format code\"."
 ---
 
 # Zed Skill

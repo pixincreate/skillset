@@ -1,6 +1,6 @@
 ---
 name: github-review-publisher
-description: Create and publish GitHub PR review comments from code quality issues. Validates line numbers and creates pending reviews for manual approval. Use when you have code issues to publish as GitHub review comments.
+description: "Create and publish GitHub PR review comments from code quality issues. Validates line numbers and creates pending reviews for manual approval. Use when you have code issues to publish as GitHub review comments."
 ---
 
 # GitHub Review Publisher Skill

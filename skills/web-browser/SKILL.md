@@ -1,6 +1,6 @@
 ---
 name: web-browser
-description: Web browsing and interaction skills. Use when you need to search, navigate, or interact with web content. Auto-activates for: "search the web", "open URL", "check website", "analyze page".
+description: "Web browsing and interaction skills. Use when you need to search, navigate, or interact with web content. Auto-activates for: \"search the web\", \"open URL\", \"check website\", \"analyze page\"."
 ---
 
 # Web Browser Skill

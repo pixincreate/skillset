@@ -1,6 +1,6 @@
 ---
 name: starship
-description: Configure and customize starship shell prompt. Use when setting up starship, customizing prompt appearance, adding modules, or optimizing shell prompt functionality. Auto-activates for: "configure starship", "customize prompt", "starship config", "prompt setup".
+description: "Configure and customize starship shell prompt. Use when setting up starship, customizing prompt appearance, adding modules, or optimizing shell prompt functionality. Auto-activates for: \"configure starship\", \"customize prompt\", \"starship config\", \"prompt setup\"."
 ---
 
 # Starship Skill
