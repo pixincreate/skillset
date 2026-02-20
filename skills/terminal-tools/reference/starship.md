@@ -1,13 +1,8 @@
----
-name: starship
-description: "Configure and customize starship shell prompt. Use when setting up starship, customizing prompt appearance, adding modules, or optimizing shell prompt functionality. Auto-activates for: \"configure starship\", \"customize prompt\", \"starship config\", \"prompt setup\"."
----
-
-# Starship Skill
+# Starship Reference
 
 ## Core Principle
 
-**Configure informative, fast shell prompts**: Set up a prompt that shows useful context without slowing down your terminal.
+Configure informative, fast shell prompts: Set up a prompt that shows useful context without slowing down your terminal.
 
 ## When to Use This Skill
 
@@ -370,12 +365,3 @@ starship preset tokyo-night
 3. **Consistent symbols**: Use same style throughout
 4. **Test changes**: Use `starship explain` to verify
 5. **Version control**: Keep config in dotfiles repo
-
-## Integration Notes
-
-Works with:
-- All major shells (bash, zsh, fish, PowerShell)
-- Terminal multiplexers (tmux, screen)
-- Git workflows
-- Development environments
-- Container environments

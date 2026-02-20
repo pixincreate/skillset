@@ -1,13 +1,8 @@
----
-name: zed
-description: "Use Zed editor effectively with workflows for navigation, editing, and project management. Use when working with Zed, managing projects, using keybindings, or configuring themes. Auto-activates for: \"open in zed\", \"split pane\", \"search in project\", \"format code\"."
----
-
-# Zed Skill
+# Zed Reference
 
 ## Core Principle
 
-**Speed through keyboard-driven editing**: Master Zed's modal editing and command palette for efficient development.
+Speed through keyboard-driven editing: Master Zed's modal editing and command palette for efficient development.
 
 ## When to Use This Skill
 
@@ -360,12 +355,3 @@ Cmd/Ctrl+Shift+R - Replace in directory
   }
 }
 ```
-
-## Integration Notes
-
-Works seamlessly with:
-- Git workflows
-- Language servers
-- Build tools
-- Testing frameworks
-- Multiple repositories

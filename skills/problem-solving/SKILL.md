@@ -322,6 +322,42 @@ Before finalizing solution:
 - Graph Algorithms: [Algorithms Specialization](https://www.coursera.org/specializations/algorithms)
 - System Design: [System Design Primer](https://github.com/donnemartin/system-design-primer)
 
+## Task Breakdown
+
+Break down complex problems into manageable tasks:
+
+1. **Identify Components**: What are the main parts?
+2. **Identify Dependencies**: What must be done first?
+3. **Estimate Effort**: How long each task takes
+4. **Order Tasks**: Dependency-first ordering
+5. **Create Checkpoints**: Milestones for validation
+
+### Task Granularity
+
+**Each task should be 2-5 minutes:**
+
+- "Write the failing test" - step
+- "Run it to make sure it fails" - step
+- "Implement the minimal code to make test pass" - step
+- "Run tests and verify they pass" - step
+- "Commit" - step
+
+## Systematic Engineering
+
+Plan and execute complex code changes systematically:
+
+1. **Analyze**: Map affected files and dependencies
+2. **Plan**: Determine optimal order (Dependencies First)
+3. **Execute**: Implement changes atomically and incrementally
+4. **Rescue**: If errors occur, trace back to root cause
+
+### Principles
+
+- **Atomic Changes**: Testable, independent steps
+- **Dependency First**: Resolve dependencies before dependents
+- **Test Early**: Validate at each step
+- **Rollback Strategy**: Know how to revert if needed
+
 ## Remember
 
 - Understand the problem thoroughly first

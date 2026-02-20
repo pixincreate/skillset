@@ -1,13 +1,8 @@
----
-name: ghostty
-description: "Configure and use Ghostty terminal emulator effectively. Use when setting up Ghostty, customizing terminal behavior, managing themes, or optimizing terminal workflow. Auto-activates for: \"configure ghostty\", \"ghostty theme\", \"terminal font\", \"ghostty keybindings\"."
----
-
-# Ghostty Skill
+# Ghostty Reference
 
 ## Core Principle
 
-**Create efficient terminal environments**: Configure Ghostty for optimal performance and workflow integration.
+Create efficient terminal environments: Configure Ghostty for optimal performance and workflow integration.
 
 ## When to Use This Skill
 
@@ -343,25 +338,43 @@ Cmd/Ctrl+Shift+P  # Open command palette
 ### Configuration Commands
 ```conf
 # Appearance
-theme = darkOpacity = 0.9blur = falsebackground = #1e1e1eforeground = #d4d4d4
+theme = dark
+opacity = 0.9
+blur = false
+background = #1e1e1e
+foreground = #d4d4d4
 
 # Font
-font-family = Code Profont-size = 14font-weight = 500line-height = 1.4
+font-family = Code Pro
+font-size = 14
+font-weight = 500
+line-height = 1.4
 
 # Behavior
-shell-integration = enabledconfirm-close-surface = truemouse-hide-while-typing = true
+shell-integration = enabled
+confirm-close-surface = true
+mouse-hide-while-typing = true
 ```
 
 ### Keybind Patterns
 ```conf
 # Copy/Paste
-cmd+c=copycmd+v=pasteshift+cmd+c=copy_to_clipboard shift+cmd+v=paste_from_clipboard
+cmd+c=copy
+cmd+v=paste
+shift+cmd+c=copy_to_clipboard
+shift+cmd+v=paste_from_clipboard
 
 # Navigation
-cmd+t=new_tabcmd+w=close_tabcmd+shift+T=reopen_tabcmd+n=new_windowcmd+w=close_window
+cmd+t=new_tab
+cmd+w=close_tab
+cmd+shift+T=reopen_tab
+cmd+n=new_window
+cmd+w=close_window
 
 # Font
-cmd+plus=increase_font_size cmd+minus=decrease_font_size cmd+0=reset_font_size
+cmd+plus=increase_font_size
+cmd+minus=decrease_font_size
+cmd+0=reset_font_size
 ```
 
 ## Troubleshooting
@@ -410,12 +423,3 @@ ghostty --version
 1. **Server profiles**: Multiple profiles for different servers
 2. **SSH integration**: Configure for remote work
 3. **Logging**: Enable command notifications
-
-## Integration Notes
-
-Works with:
-- All modern shells
-- Tmux integration
-- Multiplexer compatibility
-- VS Code integrated terminal
-- SSH connections
