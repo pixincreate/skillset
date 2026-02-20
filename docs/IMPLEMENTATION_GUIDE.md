@@ -4,7 +4,7 @@
 
 This guide provides comprehensive documentation for implementing and maintaining the skills collection system. It enables any AI agent (Claude Code, OpenAI's tools, GitHub Copilot, or other AI assistants) to effectively utilize the skills collection for enhanced software development capabilities.
 
-For the actual system prompt to use with AI agents, see `/SYSTEM_PROMPT.md`.
+For the system prompt to use with AI agents, see `/AGENTS.md`.
 
 ## Core Instructions
 
@@ -84,8 +84,9 @@ When updating skills during escalation:
 
 | Domain | Primary Skill | Secondary Skills | Escalation Sources |
 |--------|---------------|------------------|-------------------|
-| Terminal | ghostty, starship, tmux | web-browser | ghostty.org, starship.rs |
-| Code Editing | zed | misc, debugging | zed.dev |
+| Terminal | terminal-tools | web-browser | Tool-specific docs |
+| Code Editing | terminal-tools (zed) | misc, debugging | zed.dev |
+| Frontend Design | frontend-design | interface-design, web-design-guidelines | Web standards |
 | Architecture | architecture | problem-solving | Official docs of tech stack |
 | Testing | testing | misc, collaboration | Framework documentation |
 | Shell/CLI | tmux, starship, ghostty | web-browser | Tool-specific docs |
@@ -301,31 +302,39 @@ and the collaboration skill for security review checkpoints.
 ```
 /
 ├── README.md                    # Overview and installation
-├── SYSTEM_PROMPT.md             # Detailed system prompt (this file)
-├── SYSTEM_PROMPT_CONCISE.md     # Concise system prompt
-└── skills/                      # Individual skill directories
-    ├── architecture/            # Software architecture and design
-    ├── collaboration/           # Team communication and code reviews
-    ├── code-quality-review/     # Code quality analysis with security checks
-    ├── debugging/               # Systematic bug fixing
-    ├── ghostty/                 # Terminal emulator configuration
-    ├── github-review-publisher/ # Create validated GitHub PR reviews
-    ├── misc/                    # Code quality and general practices
-    ├── pr-analysis/             # Pull request metadata and analysis
-    ├── problem-solving/         # Algorithmic approaches
-    ├── research/                # Investigation methods
-    ├── starship/                # Shell prompt configuration
-    ├── testing/                 # Test strategies
-    ├── web-browser/             # Web research and content access
-    └── zed/                     # Code editor workflows
-
-Each skill directory contains a single SKILL.md file with:
-- YAML frontmatter (name, description)
-- Core Principle
-- When to Use section
-- Systematic workflows
-- Practical examples
-- Checklists and references
+├── AGENTS.md                    # System prompt and usage instructions
+├── scripts/                      # Installation scripts
+│   └── symlink.sh              # Create/remove symlinks
+├── docs/                        # Documentation
+├── commands/                    # Command templates (for supported tools)
+└── skills/                      # Skill directories
+    ├── terminal-tools/          # tmux, starship, ghostty, zed
+    │   └── reference/          # Tool-specific references
+    ├── frontend-design/         # UI/UX guidelines and interfaces
+    │   └── reference/          # Design references
+    ├── testing/                # Testing patterns
+    │   └── reference/          # TDD reference
+    ├── debugging/              # Systematic debugging
+    │   └── reference/          # Root cause analysis
+    ├── web-design-guidelines/  # Web interface guidelines
+    │   └── reference/          # Detailed guidelines
+    ├── architecture/           # Software architecture
+    ├── brainstorming/           # Creative exploration
+    ├── code-quality-review/     # Code quality analysis
+    ├── collaboration/          # Team practices
+    ├── dispatching-parallel-agents/ # Parallel agent tasks
+    ├── github-review-publisher/    # GitHub PR reviews
+    ├── interface-design/       # Interface design philosophy
+    ├── misc/                   # General practices
+    ├── pr-analysis/            # PR analysis
+    ├── problem-solving/        # Problem solving
+    ├── research/               # Technical research
+    ├── web-browser/           # Web browsing
+    └── writing-plans/          # Planning and specs
 ```
+
+Each skill directory contains:
+- `SKILL.md` - Main skill file with YAML frontmatter
+- `reference/` (optional) - Detailed reference documents
 
 Remember: The skills collection is a living document. Each user interaction is an opportunity to enhance the skills for future users.

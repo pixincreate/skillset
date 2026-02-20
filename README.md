@@ -1,242 +1,92 @@
-# Claude Skills Collection
+# Skills Collection
 
-## Introduction
-
-This repository contains a curated collection of professional software development skills for Claude Code, designed to enhance the AI's capabilities in software engineering tasks. Each skill follows the official Claude Skills specification and provides systematic approaches to common development challenges.
-
-The skills are optimized for:
-
-- Concise, actionable guidance
-- Systematic workflows rather than general knowledge
-- Real-world implementation patterns
-- Integration with Claude Code's capabilities
-- Professional software engineering practices
-
-## Usage
-
-These skills work with Claude Code to enhance software development workflows. The skills automatically activate when:
-
-- The description in the YAML frontmatter matches the user's request
-- The user invokes specific commands related to the skill's domain
-- Used as part of larger workflows with other skills
-
-**Example**: When you request "Review this code", the `code-quality-review` skill activates and performs a systematic code review.
-
-### System Prompt
-
-For AI agents, use the system prompt at `/SYSTEM_PROMPT.md`.
-
-For detailed implementation and maintenance documentation, see the `/docs` directory.
+A collection of skills for AI coding agents. Skills are packaged instructions that extend agent capabilities.
 
 ## Installation
 
-### Option 1: symlink Install (Recommended)
+### 1. Capsync (Recommended)
 
-Create a symlink from your repository to Claude:
-
-```bash
-# From the repository root
-./scripts/install.sh
-```
-
-This creates a symlink from `~/.claude/skills` to your repository, making updates trivial.
-
-### Option 2: Plugin Installation
-
-This repository is structured as a Claude Code plugin:
+[Capsync](https://crates.io/crates/capsync) automatically symlinks skills and commands to all installed CLI tools.
 
 ```bash
-# If Claude Code supports plugins
-claude-code plugin install claude-skills-collection
-
-# Or manual configuration
-claude config set plugins.claude-skills-collection /path/to/this/repo
+cargo install capsync
+capsync init  # Enter skills directory path when prompted
 ```
 
-### Option 3: Manual Installation
-
-1. **Clone the repository**:
+### 2. Script-based Symlink
 
 ```bash
-# Create skills directory if needed
-mkdir -p ~/.claude/skills
-
-# Clone the skills
-git clone https://github.com/pixincreate/claude-skills.git ~/.claude/skills
+./scripts/symlink.sh      # Interactive - asks for installation path
+./scripts/symlink-commands.sh  # Interactive - asks for commands path
 ```
 
-2. **Verify installation**:
+### 3. Manual Symlink
 
 ```bash
-cd ~/.claude/skills
-tree
+# For skills
+mkdir -p ~/.claude/skills/
+ln -s /path/to/skills ~/.claude/skills/skills
+
+# For commands
+mkdir -p ~/.claude/commands/
+ln -s /path/to/skills/commands/*.md ~/.claude/commands/
 ```
 
-The directory structure should look like:
+### 4. Copy (Last Resort)
 
+```bash
+cp -r skills/ ~/.claude/skills/
+cp commands/*.md ~/.claude/commands/
 ```
-~/.claude/skills/
-├── architecture
-│   └── SKILL.md
-├── collaboration
-│   └── SKILL.md
-├── code-quality-review
-│   └── SKILL.md
-├── debugging
-│   └── SKILL.md
-├── ghostty
-│   └── SKILL.md
-├── github-review-publisher
-│   └── SKILL.md
-├── misc
-│   └── SKILL.md
-├── pr-analysis
-│   └── SKILL.md
-├── problem-solving
-│   └── SKILL.md
-├── research
-│   └── SKILL.md
-├── starship
-│   └── SKILL.md
-├── testing
-│   └── SKILL.md
-├── tmux
-│   └── SKILL.md
-├── web-browser
-│   └── SKILL.md
-└── zed
-    └── SKILL.md
-```
-
-3. **Restart Claude Code** to load the new skills
-
-### Plugin Commands
-
-When installed as a plugin, you can use these commands:
-
-- `/pr-review [PR_NUMBER]` - Complete PR review workflow
-- `/list-skills` - Show all available skills
-- `/skill-info [SKILL_NAME]` - Get details about a skill
 
 ## Skills
 
-### Debugging
+### Merged Skills (with references)
 
-Systematic workflow for identifying, isolating, and fixing bugs. Focuses on methodical investigation over random trial-and-error.
+| Skill                    | Description                                            |
+| ------------------------ | ------------------------------------------------------ |
+| `terminal-tools/`        | Terminal productivity: tmux, starship, ghostty, zed    |
+| `frontend-design/`       | UI/UX: guidelines, interfaces, creative implementation |
+| `testing/`               | Testing patterns including TDD                         |
+| `debugging/`             | Systematic debugging including root cause analysis     |
+| `web-design-guidelines/` | Web interface guidelines fetched from web              |
 
-**When to use**: Troubleshooting errors, unexpected behavior, or performance issues.
+### Individual Skills
 
-### Architecture
+| Skill                          | Description                                |
+| ------------------------------ | ------------------------------------------ |
+| `architecture/`                | Software architecture and system design    |
+| `behavior-validation/`         | Test behavior against requirements         |
+| `brainstorming/`               | Creative exploration before implementation |
+| `code-change-review/`          | Review code changes systematically         |
+| `code-quality-review/`         | Code quality and security reviews          |
+| `codebase-exploration/`        | Understand unfamiliar codebases            |
+| `collaboration/`               | Team collaboration practices               |
+| `dispatching-parallel-agents/` | Running parallel agent tasks               |
+| `github-review-publisher/`     | Publishing GitHub PR reviews               |
+| `interface-design/`            | High-level interface design philosophy     |
+| `misc/`                        | General development practices              |
+| `planning/`                    | Requirements and writing plans             |
+| `pr-analysis/`                 | Pull request analysis                      |
+| `problem-solving/`             | Systematic problem solving                 |
+| `research/`                    | Technical research and exploration         |
+| `spec-enforcement/`            | Verify implementation matches spec         |
+| `web-browser/`                 | Web browsing and interaction               |
 
-Software architecture and system design guidance applying SOLID principles and established patterns.
+## Usage
 
-**When to use**: Designing new systems, evaluating architecture, or making technology decisions.
-
-### Research
-
-Systematic technical research and codebase exploration with emphasis on thorough investigation.
-
-**When to use**: Investigating unfamiliar codebases or gathering information for technical decisions.
-
-### Testing
-
-Writing effective tests following the testing pyramid and best practices.
-
-**When to use**: Writing tests, implementing TDD, or ensuring code quality.
-
-### Problem Solving
-
-Systematic approach for complex technical challenges, emphasizing understanding before solving.
-
-**When to use**: Faced with algorithmic problems, performance optimization, or design decisions.
-
-### Misc
-
-Essential development practices including code review, refactoring, and documentation.
-
-**When to use**: Reviewing code, improving quality, or following development standards.
-
-### Collaboration
-
-Effective team collaboration practices emphasizing clear communication.
-
-**When to use**: Working with teams, conducting code reviews, or providing feedback.
-
-### Web Browser
-
-Automated web browsing workflow for unreachable URLs or paywalled content using textise dot iitty.
-
-**When to use**: Accessing blocked content, reading articles behind paywalls, or when direct browser access is not possible.
-
-### Tmux
-
-Terminal multiplexer for persistent sessions and multiple terminal management.
-
-**When to use**: Managing multiple terminals, keeping sessions alive, remote server work, or organizing terminal workspace.
-
-### Starship
-
-Customizable shell prompt for showing relevant context and information.
-
-**When to use**: Setting up shell prompt, customizing prompt appearance, or displaying environment context in terminal.
-
-### Zed
-
-Modern, keyboard-driven code editor with excellent performance and features.
-
-**When to use**: Code editing, project management, multi-file workflows, or when seeking a fast editor experience.
-
-### Ghostty
-
-Modern terminal emulator with GPU acceleration and extensive customization.
-
-**When to use**: Terminal configuration, customizing terminal behavior, or optimizing terminal workflow.
-
-### PR Analysis
-
-Comprehensive pull request analysis and metadata extraction from GitHub repositories.
-
-**When to use**: Understanding PR changes, analyzing code modifications, or extracting PR context for code reviews.
-
-### Code Quality Review
-
-Systematic code quality analysis with security checks and accurate line number extraction.
-
-**When to use**: Reviewing code changes, applying project standards, or identifying security and quality issues.
-
-### GitHub Review Publisher
-
-Create and publish validated GitHub PR review comments from code quality findings.
-
-**When to use**: Publishing code review comments, creating pending reviews, or managing PR review workflows.
-
-## Contribution
-
-Contributions are welcome! Please:
-
-1. Fork the repository
-2. Create a branch for your changes
-3. Submit a pull request with clear description
-
-Focus on concise, actionable improvements to existing skills.
+Skills auto-activate based on triggers in their YAML frontmatter. The skill description tells you when to use each skill.
 
 ## Uninstallation
 
-To remove the skills:
-
 ```bash
-# Run the uninstall script
-./scripts/uninstall.sh
-```
+./scripts/symlink.sh
+# Select option 2 to uninstall
 
-This will remove the symlink and restore any backup if found.
+./scripts/symlink-commands.sh
+# Select option 2 to uninstall
+```
 
 ## License
 
-This work is licensed under the [Creative Commons Zero v1.0 Universal](https://creativecommons.org/publicdomain/zero/1.0/).
-
-## Disclaimer
-
-THE SKILLS PROVIDED IN THIS REPOSITORY ARE PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED. IN NO EVENT SHALL THE AUTHORS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SKILLS.
-
-THE AUTHOR IS NOT RESPONSIBLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES ARISING FROM THE USE OF THESE SKILLS, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+Creative Commons Zero v1.0 Universal
