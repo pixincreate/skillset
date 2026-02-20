@@ -1,3 +1,8 @@
+---
+name: list-skills
+description: Lists all available skills in the skillset with their descriptions and categories
+---
+
 # /list-skills - List All Available Skills
 
 ## Description

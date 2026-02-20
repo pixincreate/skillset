@@ -1,3 +1,8 @@
+---
+name: skill-info
+description: Shows detailed information about a specific skill including purpose, triggers, and features
+---
+
 # /skill-info - Get Information About a Skill
 
 ## Description

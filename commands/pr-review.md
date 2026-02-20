@@ -1,3 +1,8 @@
+---
+name: pr-review
+description: Complete pull request review workflow - analyzes PR, reviews code quality, and creates pending review
+---
+
 # /pr-review - Complete Pull Request Review Workflow
 
 ## Description
