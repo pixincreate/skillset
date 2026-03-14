@@ -58,6 +58,8 @@ Each domain is independent - fixing tool approval doesn't affect abort tests.
 
 ### 2. Create Focused Agent Tasks
 
+Use the dispatch and worker-template scripts from `dispatching-parallel-agents/scripts` directory.
+
 Each agent gets:
 
 - **Specific scope:** One test file or subsystem
