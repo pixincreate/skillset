@@ -350,3 +350,11 @@ grep -r "serde::Serialize\|serde::Deserialize" --include="*.rs" backend/
 - Calculate quality score based on severity
 - Focus on security and breaking changes first
 - Be constructive and specific in feedback
+
+---
+
+## Related Skills
+
+- **pr-analysis** — Provides file paths and commit SHA for integration
+- **github-review-publisher** — Consumes structured issues for GitHub
+- **collaboration** — Enhanced review process
