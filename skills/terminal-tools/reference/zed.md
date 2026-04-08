@@ -1,349 +1,216 @@
 # Zed Reference
 
+> **IMPORTANT**: Zed updates frequently. Always verify at https://zed.dev/docs/ when uncertain.
+
 ## Core Principle
 
-Speed through keyboard-driven editing: Master Zed's modal editing and command palette for efficient development.
+Speed through keyboard-driven editing. Master the command palette, modal editing, and the built-in AI agent for efficient development.
 
 ## When to Use This Skill
 
 This skill auto-activates when users request:
 - "Open file in Zed"
-- "Split pane horizontally"
+- "Split pane in Zed"
 - "Search in project"
 - "Go to definition"
 - "Format the code"
-- "Toggle theme"
-- "Zen mode"
+- "Toggle theme in Zed"
+- "Zed AI agent"
+- "Remote development in Zed"
+- "Configure Zed settings"
 
-## Essential Zed Basics
+## Quick Start
 
-### Quick Start
-
-**Opening Zed**:
 ```bash
-# Open Zed
-zed
-
-# Open file
-zed file.py
-
-# Open directory
-zed project-folder/
-
-# Open with line number
-zed file.py:42
+zed .                    # open current directory
+zed file.py              # open file
+zed file.py:42           # open at line 42
+zed ~/projects/my-app    # open project
 ```
 
-**First-time setup**:
-1. Open Zed
-2. Complete welcome tour
-3. Open Command Palette: `Cmd+Shift+P` (macOS) or `Ctrl+Shift+P` (Linux)
-4. Configure theme and settings
+First launch: complete the welcome tour. Command palette (`Cmd+Shift+P`) is your gateway to every action.
 
-## Core Navigation
+## Essential Shortcuts
 
-### File Navigation
+| Action                  | macOS            | Linux/Windows     |
+| ----------------------- | ---------------- | ----------------- |
+| Command palette         | `Cmd+Shift+P`    | `Ctrl+Shift+P`    |
+| Go to file              | `Cmd+P`          | `Ctrl+P`          |
+| Go to symbol            | `Cmd+Shift+O`    | `Ctrl+Shift+O`    |
+| Find in project         | `Cmd+Shift+F`    | `Ctrl+Shift+F`    |
+| Toggle terminal         | `` Ctrl+` ``     | `` Ctrl+` ``      |
+| Open settings           | `Cmd+,`          | `Ctrl+,`          |
+| Extensions              | `Cmd+Shift+X`    | `Ctrl+Shift+X`    |
+| Theme selector          | `Cmd+K Cmd+T`    | `Ctrl+K Ctrl+T`   |
+| AI agent panel          | `Cmd+Shift+A`    | `Ctrl+Shift+A`    |
+| Inline AI               | `Cmd+Enter`      | `Ctrl+Enter`      |
+| Git panel               | `Cmd+Shift+G`    | `Ctrl+Shift+G`    |
+| Toggle sidebar          | `Cmd+B`          | `Ctrl+B`          |
+| Toggle panel            | `Cmd+J`          | `Ctrl+J`          |
+| Find in file            | `Cmd+F`          | `Ctrl+F`          |
+| Replace in project      | `Cmd+Shift+H`    | `Ctrl+Shift+H`    |
+| Toggle comment          | `Cmd+/`          | `Ctrl+/`          |
+| Go to definition        | `Cmd+Click` / `F12` | `Ctrl+Click` / `F12` |
+| Find all references     | `Shift+F12`      | `Shift+F12`       |
+| Rename symbol           | `F2`             | `F2`              |
+| Multi-cursor next match | `Cmd+D`          | `Ctrl+D`          |
+| Move line up/down       | `Cmd+Shift+↑/↓`  | `Ctrl+Shift+↑/↓`  |
+| Remote Projects         | `Ctrl+Cmd+Shift+O` | `Alt+Ctrl+Shift+O` |
 
-**Command Palette**:
-```
-Cmd/Ctrl+Shift+P - Access all commands
-```
+## Settings File
 
-**Basic movement**:
-```
-h, j, k, l        - Move cursor (vi mode)
-w, b              - Word forward/backward
-0, $              - Line start/end
-gg, G             - File start/end
-```
+`~/.config/zed/settings.json` — open with `Cmd+,`.
 
-**Quick navigation**:
-```
-Cmd/Ctrl+P        - Open file
-Cmd/Ctrl+T        - File tree
-Cmd/Ctrl+B        - Toggle side bar
-```
+Common settings:
 
-### Search and Replace
-
-**Project search**:
-```
-Cmd/Ctrl+Shift+F  - Find in project
-Cmd/Ctrl+F        - Find in file
-Cmd/Ctrl+Shift+H - Replace in project
-```
-
-**Search patterns**:
-- `filename:*test*` - Find test files
-- `path:src/` - Search in directory
-- `content:"TODO"` - Find text content
-
-## Editing Workflows
-
-### Multi-Cursor Editing
-
-**Multiple cursors**:
-```
-Cmd/Ctrl+D        - Add selection to next match
-Cmd/Ctrl+Option+Click - Add cursor at position
-Alt/Option+Up/Down - Add cursor above/below
-```
-
-**Column selection**:
-```
-Option+Drag       - Column select (macOS)
-Ctrl+Alt+Drag     - Column select (Linux)
-```
-
-### Code Manipulation
-
-**Essential edits**:
-```
-Cmd/Ctrl+/        - Toggle comment
-Cmd/Ctrl+Shift+K - Delete line
-Cmd/Ctrl+Shift+↑/↓ - Move line up/down
-Cmd/Ctrl+[ or ]   - Navigate in/out of pairs
-Cmd/Ctrl+Enter    - Insert line below
-Cmd/Ctrl+Shift+Enter - Insert line above
-```
-
-**Language specific**:
-```
-Cmd/Ctrl+Shift+F  - Format file
-Cmd/Ctrl+.        - Quick fix suggestions
-Cmd/Ctrl+Space    - Autocomplete
-```
-
-## Pane Management
-
-### Splitting and Layouts
-
-**Window splits**:
-```
-Cmd/Ctrl+Shift+P → "split:horizontal"
-Cmd/Ctrl+Shift+P → "split:vertical"
-Cmd/Ctrl+Shift+P → "close-pane"
-```
-
-**Pane navigation**:
-```
-Cmd/Ctrl+K Cmd/Ctrl+Up/Down/Left/Right - Move between panes
-Cmd/Ctrl+W        - Close current pane
-```
-
-**Layout presets**:
-```
-Cmd/Ctrl+Shift+P → "layout:two-columns"
-Cmd/Ctrl+Shift+P → "layout:three-columns"
-Cmd/Ctrl+Shift+P → "layout:toggle-vertical"
-```
-
-## Project Management
-
-### Project Workspaces
-
-**Project panel**:
-```
-Cmd/Ctrl+Shift+P → "project-panel:toggle"
-Right-click       - File operations
-a                 - New file
-```
-
-**Project-wide operations**:
-```
-Cmd/Ctrl+Shift+P → "search:in-project"
-Cmd/Ctrl+Shift+P → "terminal:new"
-Cmd/Ctrl+Shift+P → "task:new"
-```
-
-### Version Control
-
-**Git integration**:
-```
-Cmd/Ctrl+Shift+G - Git panel
-Cmd/Ctrl+Shift+P → "git:stage"
-Cmd/Ctrl+Shift+P → "git:unstage"
-Cmd/Ctrl+Shift+P → "git:commit"
-```
-
-## Language Features
-
-### Go to Definition
-
-**Code navigation**:
-```
-Cmd/Ctrl+Click    - Go to definition
-Cmd/Ctrl+Shift+Click - Peek definition
-F12               - Go to definition
-Alt+F12           - Peek definition
-```
-
-**Find references**:
-```
-Shift+F12         - Find all references
-Cmd/Ctrl+F12      - Find implementations
-```
-
-### Intellisense
-
-**Autocomplete**:
-```
-Tab or Enter      - Accept suggestion
-Cmd/Ctrl+.        - Show all fixes
-Cmd/Ctrl+,        - Parameter hints
-```
-
-## Quick Configuration
-
-### Settings
-
-**Open settings**:
-```
-Cmd/Ctrl+,        - Settings
-Cmd/Ctrl+Shift+, - Toggle keybindings
-```
-
-**Common settings**:
 ```json
 {
-  "theme": "Zed Dark",
-  "font_size": 14,
-  "tab_size": 4,
-  "show_line_numbers": true,
+  "theme": "One Dark",
+  "buffer_font_family": "JetBrains Mono",
+  "buffer_font_size": 15,
+  "buffer_line_height": "comfortable",
+  "format_on_save": "on",
+  "vim_mode": false,
+  "tab_size": 2,
+  "autosave": "on_focus_change",
+  "auto_signature_help": true,
+  "show_signature_help_after_edits": true,
+  "current_line_highlight": "all",
+  "cursor_shape": "bar",
   "soft_wrap": "editor_width",
-  "auto_save": "on_focus_change"
+  "disable_ai": false
 }
 ```
 
-### Keybindings
+Notable settings:
 
-**Custom keybindings**:
+| Setting | Default | Options |
+| ------- | ------- | ------- |
+| `vim_mode` | `false` | `true/false` |
+| `helix_mode` | `false` | `true/false` — enabling one disables the other |
+| `autosave` | `"off"` | `"off"`, `"on_focus_change"`, `"on_window_change"`, `{ "after_delay": { "milliseconds": N } }` |
+| `base_keymap` | `"VSCode"` | `VSCode`, `Atom`, `JetBrains`, `SublimeText`, `TextMate`, `None` |
+| `diff_view_style` | `"split"` | `"split"`, `"unified"` |
+| `minimap.show` | `"never"` | `"always"`, `"auto"`, `"never"` |
+| `session.restore_unsaved_buffers` | `true` | boolean |
+| `bottom_dock_layout` | `"contained"` | `"contained"`, `"full"`, `"left"`, `"right"` |
+| `active_pane_modifiers.inactive_opacity` | `1.0` | 0.0–1.0 |
+| `edit_predictions` | enabled | `{ "disabled_globs": ["**/.env*", ...] }` |
+| `disable_ai` | `false` | boolean — turns off ALL AI features |
+| `agent_font_size` | null (inherits UI) | integer 6–100 |
+| `scrollbar.show` | `"auto"` | `"auto"`, `"always"`, `"never"`, `"system"` |
+| `tabs.show_diagnostics` | `"off"` | `"off"`, `"errors"`, `"all"` |
+| `tabs.git_status` | `false` | boolean |
+
+Full reference: https://zed.dev/docs/reference/all-settings.html
+
+## AI Agent Panel
+
+Open with `Cmd+Shift+A` (macOS) or `Ctrl+Shift+A` (Linux/Windows), or search "agent: new thread" in the command palette.
+
+### What agents can do
+
+- Read and edit files in the project
+- Run terminal commands
+- Search the web
+- Access LSP diagnostics
+- Use MCP servers you configure
+
+### Key behaviors
+
+- **Checkpoints**: A "Restore Checkpoint" button appears after each edit — revert code to pre-message state
+- **Reviewing changes**: After agent edits, review changed files in a multi-buffer tab; accept/reject hunks individually
+- **Context**: Type `@` in the message editor to add files, directories, symbols, diagnostics, or previous threads as context
+- **Images**: Attach images for vision models (drag-and-drop or `@`-mention)
+- **Queuing**: Messages sent while agent is generating are queued
+- **Follow agent**: Click the crosshair icon to follow the agent across files; hold `Cmd/Ctrl` while submitting to auto-follow
+- **Profiles**: Built-in profiles are Write, Ask, Minimal — configurable via "Configure Profiles"
+
+### Tool permissions
+
+Control via `agent.tool_permissions.default` in settings:
+
 ```json
-[
-  {
-    "context": "Editor",
-    "bindings": {
-      "cmd-j": "editor:JoinLines"
+{
+  "agent": {
+    "tool_permissions": {
+      "default": "confirm"
     }
   }
-]
-```
-
-## Common Workflows
-
-### Debugging Workflow
-
-1. **Open file**: `Cmd/Ctrl+P` → search
-2. **Set breakpoint**: `F9` on line
-3. **Debug panel**: `Cmd/Ctrl+Shift+D`
-4. **Start debugging**: `F5`
-5. **Step through**: `F10` (step over), `F11` (step into)
-
-### Refactoring Workflow
-
-1. **Find symbol**: `Cmd/Ctrl+Shift+O`
-2. **Rename symbol**: `F2` or right-click → rename
-3. **Extract method**: Select → `Cmd/Ctrl+.` → extract
-4. **Format file**: `Cmd/Ctrl+Shift+F`
-
-### Theme Customization
-
-```json
-// In theme file
-{
-  "name": "Custom Theme",
-  "extends": "dark",
-  "properties": {
-    "editor.background": "#1e1e1e",
-    "editor.foreground": "#d4d4d4",
-    "editor.line_number": "#858585"
-  }
 }
 ```
 
-## Advanced Features
+Options: `"confirm"` (prompt each time), `"allow"` (auto-approve), `"deny"` (block all)
 
-### Terminal Integration
+### Configuring AI providers
 
-**Terminal in Zed**:
-```
-Cmd/Ctrl+J        - Toggle terminal panel
-Cmd/Ctrl+`        - New terminal
-Cmd/Ctrl+Shift+`  - Focus terminal
+Go to Agent Panel settings (click settings icon or search "agent: open settings").
+
+Supported providers (bring your own API key):
+- Anthropic, OpenAI, Google AI (Gemini), Ollama, Mistral
+- DeepSeek, xAI (Grok), LM Studio, OpenRouter
+- Amazon Bedrock, GitHub Copilot Chat
+- Vercel AI Gateway, Vercel v0
+- Any OpenAI-compatible endpoint
+
+Keys are stored in your OS's secure credential store — not in `settings.json`.
+
+Set via environment variables too: `ANTHROPIC_API_KEY`, `OPENAI_API_KEY`, etc.
+
+**Turn off all AI:**
+
+```json
+{ "disable_ai": true }
 ```
 
-**Multi-repo**:
-```
-Cmd/Ctrl+Shift+P → "project:add-directory"
-```
+Docs: https://zed.dev/docs/ai/overview.html
 
-### Tasks and Build
+## Remote Development (SSH)
 
-**Run commands**:
-```
-Cmd/Ctrl+Shift+P → "task:new"
-Cmd/Ctrl+Shift+T - Run task
-```
+Edit code on a remote server while running the Zed UI locally. Language servers, tasks, and terminals run on the remote host.
 
-**Task configuration**:
+**Requirements**: Zed v0.159+. Remote server must be macOS or Linux (x86_64 or aarch64). Windows remote server not yet supported.
+
+### Setup
+
+1. Open Remote Projects dialog: `Ctrl+Cmd+Shift+O` (macOS) / `Alt+Ctrl+Shift+O` (Linux/Windows)
+2. Click "Connect New Server"
+3. Enter the SSH command for the remote server
+4. Zed downloads and starts the headless server on the remote host
+5. Choose a path to open on the remote server
+
+Zed's headless server is installed to `~/.zed_server` on the remote.
+
+### SSH config (settings.json)
+
 ```json
 {
-  "tasks": [
+  "ssh_connections": [
     {
-      "label": "Build",
-      "command": "npm",
-      "args": ["run", "build"]
+      "host": "myserver.example.com",
+      "username": "me",
+      "port": 22,
+      "nickname": "prod",
+      "projects": ["/home/me/projects/myapp"]
     }
   ]
 }
 ```
 
-## Performance Tips
+### Known limitations
 
-### Keep Zed Fast
+- Cannot open remote files from the local terminal via `zed` command
+- Windows cannot act as remote server (only client)
 
-1. **Minimize large files**: Avoid opening >10MB files
-2. **Use search filters**: Be specific with search terms
-3. **Close unused panes**: Keep window clean
-4. **Disable extensions**: Remove unused language servers
+Docs: https://zed.dev/docs/remote-development.html
 
-## Quick Reference
+## Language Setup
 
-### Essential Shortcuts
-```
-Cmd/Ctrl+P        - Open file
-Cmd/Ctrl+Shift+P - Command palette
-Cmd/Ctrl+/        - Toggle comment
-Cmd/Ctrl+S        - Save
-Cmd/Ctrl+Z        - Undo
-Cmd/Ctrl+Y        - Redo
-```
+Zed has built-in support for most languages. For others:
 
-### View Commands
-```
-Cmd/Ctrl+`        - Toggle terminal
-Cmd/Ctrl+B        - Toggle sidebar
-Cmd/Ctrl+J        - Toggle panel
-Cmd/Ctrl+0        - Focus active editor
-```
+1. `Cmd+Shift+X` → search your language → Install
+2. LSP configuration in settings:
 
-### Search Commands
-```
-Cmd/Ctrl+F        - Find
-Cmd/Ctrl+Shift+F - Find in directory
-Cmd/Ctrl+R        - Replace
-Cmd/Ctrl+Shift+R - Replace in directory
-```
-
-## Language Support
-
-**Built-in languages**:
-- JavaScript, TypeScript
-- Python, Rust, Go
-- HTML, CSS, JSON
-- Markdown, YAML
-
-**LSP configuration**:
 ```json
 {
   "lsp": {
@@ -355,3 +222,82 @@ Cmd/Ctrl+Shift+R - Replace in directory
   }
 }
 ```
+
+Docs: https://zed.dev/docs/languages
+
+## Vim / Helix Mode
+
+```json
+{ "vim_mode": true }
+```
+
+or
+
+```json
+{ "helix_mode": true }
+```
+
+Enabling one automatically disables the other. Full docs: https://zed.dev/docs/vim
+
+## Custom Keybindings
+
+`~/.config/zed/keymap.json`
+
+```json
+[
+  {
+    "context": "Editor",
+    "bindings": {
+      "cmd-j": "editor::JoinLines"
+    }
+  }
+]
+```
+
+Open with `Cmd+K Cmd+S` or search "zed: open keymap" in the command palette.
+
+Docs: https://zed.dev/docs/key-bindings
+
+## Multi-Cursor
+
+| Action | macOS | Linux/Windows |
+| ------ | ----- | ------------- |
+| Add cursor to next match | `Cmd+D` | `Ctrl+D` |
+| Add cursor above/below | `Alt+↑/↓` | `Alt+↑/↓` |
+| Add cursor at click | `Cmd+Option+Click` | `Ctrl+Alt+Click` |
+| Column select | `Option+Drag` | `Ctrl+Alt+Drag` |
+
+## Tasks
+
+```json
+// .zed/tasks.json in project root
+[
+  {
+    "label": "Build",
+    "command": "npm run build"
+  },
+  {
+    "label": "Test",
+    "command": "npm test"
+  }
+]
+```
+
+Run with `Cmd+Shift+P` → "task: spawn" or `Cmd+Shift+T`.
+
+## Recent Features (2025–2026)
+
+- **Multi-line search and replace** in Buffer Search and Project Search (v0.230.0)
+- **Git status indicators** in the project panel (v0.230.0)
+- **Paste files/folders into Agent Panel** as context (v0.230.0)
+- **Vim/Emacs modeline support** for per-file language detection and editor settings (v0.230.0)
+- **Screen sharing on Wayland/Linux** (v0.230.0)
+- **Settings Editor UI** — fully rebuilt with strong-typed settings, per-project/per-server/user levels (Dec 2025)
+- **Zeta2 edit prediction model** — 30% better acceptance rate, open-weight, default for all users (Mar 2026)
+- **Multiple Project Search Tabs** — open searches in parallel tabs
+- **External agents**: Claude Agent, Gemini CLI, Codex run directly in Zed via Agent Client Protocol
+- **Helix mode** added alongside Vim mode (enabling one disables the other)
+- **Minimap** (opt-in): `{ "minimap": { "show": "auto" } }`
+
+Release notes: https://zed.dev/releases
+Blog: https://zed.dev/blog
