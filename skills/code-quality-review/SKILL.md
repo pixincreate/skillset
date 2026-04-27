@@ -5,6 +5,20 @@ description: "Perform comprehensive code quality reviews with project-specific s
 
 # Code Quality Review Skill
 
+## Simplicity First Principle
+
+**Simple code > clever code. Minimum code that solves the problem. Nothing speculative.**
+
+When reviewing, flag these as issues:
+
+- **Overcomplication**: Code that could be half as long
+- **Unnecessary abstractions**: Factory patterns, base classes for single use
+- **Speculative "flexibility"**: Configurability not requested by the user
+- **Preemptive error handling**: Handling scenarios that can't happen
+- **Bloated APIs**: More parameters than needed
+
+**The test**: Would a senior engineer say this is overcomplicated? If yes, flag it.
+
 ## Core Principle
 
 **Systematic quality analysis**: Apply project standards, security best practices, and extract accurate line numbers for GitHub PR reviews.
@@ -12,6 +26,7 @@ description: "Perform comprehensive code quality reviews with project-specific s
 ## When to Use This Skill
 
 This skill auto-activates when users request:
+
 - "Review this code"
 - "Check code quality"
 - "Find security issues"
@@ -24,6 +39,7 @@ This skill auto-activates when users request:
 ### 1. Scope Identification
 
 **Input Types**:
+
 - PR Number (reviews all changed files)
 - Specific file paths (targeted review)
 - Diff content (inline review)
@@ -50,6 +66,7 @@ LINE_NUM=$(grep -n "{pattern}" /tmp/file_at_head.rs | head -1 | cut -d: -f1)
 **Category Checks**:
 
 #### Connector Integration Standards
+
 - ✅ Use `RouterDataV2` instead of deprecated `RouterData`
 - ✅ Use `MinorUnit` for monetary amounts
 - ✅ No hardcoded IDs or test keys
@@ -57,12 +74,14 @@ LINE_NUM=$(grep -n "{pattern}" /tmp/file_at_head.rs | head -1 | cut -d: -f1)
 - ✅ Implement all required payment flows
 
 #### Core Domain Standards
+
 - ✅ Type safety with proper serialization
 - ✅ No `.unwrap()` in production code
 - ✅ Enum variants explicitly handled
 - ✅ Optional fields properly typed
 
 #### Security Standards
+
 - ✅ No SQL injection vulnerabilities
 - ✅ No hardcoded secrets or API keys
 - ✅ Proper input validation
@@ -71,17 +90,20 @@ LINE_NUM=$(grep -n "{pattern}" /tmp/file_at_head.rs | head -1 | cut -d: -f1)
 ### 4. Issue Categorization
 
 **Severity Levels**:
+
 - **CRITICAL** (-20 points): Security issues, breaking changes, type errors
 - **WARNING** (-5 points): Code quality, potential bugs, performance issues
 - **SUGGESTION** (-1 point): Style, documentation, minor improvements
+- **SIMPLICITY** (-5 points): Overcomplication, unnecessary abstractions, speculative code
 
 ### 5. Generate Quality Score
 
 ```
-Score = 100 - (Critical × 20) - (Warnings × 5) - (Suggestions × 1)
+Score = 100 - (Critical × 20) - (Warnings × 5) - (Suggestions × 1) - (Simplicity × 5)
 ```
 
 **Rating Scale**:
+
 - 95-100: Excellent ✨ (Auto-approve)
 - 90-94: Good ✅ (Approve)
 - 80-89: Needs Work ⚠️ (Request changes)
@@ -108,9 +130,9 @@ warnings:
   - severity: WARNING
     category: "Code Quality"
     file: "backend/connectors/stripe/transformers.rs"
-    line_number: 78          # Line in NEW file
-    line_reference: "NEW_FILE"  # Explicit reference
-    commit_sha: "abc123..."     # PR HEAD commit
+    line_number: 78 # Line in NEW file
+    line_reference: "NEW_FILE" # Explicit reference
+    commit_sha: "abc123..." # PR HEAD commit
     issue: "Status mapping may be incorrect"
     current_code: |
       status: match api_status { "unknown" => AttemptStatus::Failure }
@@ -146,6 +168,7 @@ suggestions:
 ### Connector Integration Rules
 
 1. **RouterDataV2 Usage**
+
 ```rust
 // ❌ WRONG
 use hyperswitch_domain_models::RouterData;
@@ -155,6 +178,7 @@ use domain_types::router_data_v2::RouterDataV2;
 ```
 
 2. **MinorUnit for Amounts**
+
 ```rust
 // ❌ WRONG
 amount: u64, // Raw amount
@@ -164,6 +188,7 @@ amount: MinorUnit, // Properly structured
 ```
 
 3. **Error Handling**
+
 ```rust
 // ❌ WRONG
 value.unwrap() // Panics on None
@@ -175,6 +200,7 @@ value.ok_or_else(|| ApiError::MissingValue)?
 ### Security Patterns
 
 1. **No Hardcoded Secrets**
+
 ```rust
 // ❌ WRONG
 api_key: "sk_test_123456789"
@@ -184,6 +210,7 @@ api_key: config.get("STRIPE_API_KEY")?
 ```
 
 2. **Input Validation**
+
 ```rust
 // ❌ WRONG
 fn process_amount(amount: String) -> u64 {
@@ -237,6 +264,7 @@ for (i, line) in lines.iter().enumerate() {
 ## Common Issue Patterns
 
 ### Type Safety Issues
+
 ```yaml
 - Using RouterData instead of RouterDataV2
 - Missing error handling with .unwrap()
@@ -245,6 +273,7 @@ for (i, line) in lines.iter().enumerate() {
 ```
 
 ### Security Issues
+
 ```yaml
 - Hardcoded API keys or secrets
 - SQL injection vulnerabilities
@@ -253,6 +282,7 @@ for (i, line) in lines.iter().enumerate() {
 ```
 
 ### Code Quality Issues
+
 ```yaml
 - Inconsistent error types
 - Missing documentation
@@ -260,9 +290,19 @@ for (i, line) in lines.iter().enumerate() {
 - Dead or unused code
 ```
 
+### Simplicity Issues
+
+```yaml
+- Overcomplication: 200 lines when 50 would do
+- Unnecessary abstractions: Generic factories for single-use
+- Speculative "flexibility": Config options never configured
+- Bloated interfaces: More parameters than callers need
+```
+
 ## Validation Checklist
 
 Before publishing review:
+
 - [ ] Line numbers extracted from NEW file
 - [ ] `line_reference` set to "NEW_FILE"
 - [ ] Commit SHA included for validation
@@ -315,15 +355,18 @@ suggested_fix: "Corrected code"
 
 ### Severity Quick Guide
 
-| Issue Type | Severity | Points | Example |
-|------------|----------|--------|---------|
-| Security vulnerability | CRITICAL | -20 | Hardcoded API key |
-| Breaking change | CRITICAL | -20 | Removed field from struct |
-| Type error | CRITICAL | -20 | Wrong type in signature |
-| Performance issue | WARNING | -5 | N+1 query pattern |
-| Code quality | WARNING | -5 | Inconsistent error type |
-| Missing documentation | SUGGESTION | -1 | Undocumented public function |
-| Style issue | SUGGESTION | -1 | Inconsistent naming |
+| Issue Type              | Severity   | Points | Example                        |
+| ----------------------- | ---------- | ------ | ------------------------------ |
+| Security vulnerability  | CRITICAL   | -20    | Hardcoded API key              |
+| Breaking change         | CRITICAL   | -20    | Removed field from struct      |
+| Type error              | CRITICAL   | -20    | Wrong type in signature        |
+| Overcomplication        | SIMPLICITY | -5     | 200 lines when 50 would do     |
+| Unnecessary abstraction | SIMPLICITY | -5     | Factory pattern for single use |
+| Speculative flexibility | SIMPLICITY | -5     | Config option never used       |
+| Performance issue       | WARNING    | -5     | N+1 query pattern              |
+| Code quality            | WARNING    | -5     | Inconsistent error type        |
+| Missing documentation   | SUGGESTION | -1     | Undocumented public function   |
+| Style issue             | SUGGESTION | -1     | Inconsistent naming            |
 
 ### Common Commands
 

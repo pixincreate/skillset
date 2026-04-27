@@ -1,17 +1,96 @@
 ---
-name: misc
-description: Essential development practices including code review, refactoring, documentation, version control, error handling, and general best practices. Use when reviewing code, improving code quality, writing documentation, managing dependencies, or following development standards.
+name: simplicity-first
+description: Core coding principles that guide all code changes. Enforces minimum code, surgical edits, explicit assumptions, and verifiable success criteria. Use when writing, reviewing, refactoring, or making any code decisions. Always active mindset - these principles apply to every task.
+triggers:
+  - "write code"
+  - "review code"
+  - "refactor"
+  - "fix bug"
+  - "add feature"
+  - "implement"
+  - "change code"
+  - "make it simpler"
+  - "simplify"
+  - "don't overcomplicate"
 ---
 
-# Miscellaneous Development Skills
+# Simplicity-First Development Skills
 
 ## Core Principle
 
 **Leave code better than you found it**: Small, continuous improvements compound over time.
 
+---
+
+## Simplicity First - LLM Coding Guidelines
+
+> Derived from Andrej Karpathy's observations on LLM coding pitfalls. These principles help avoid overcomplication, make surgical changes, and define verifiable success criteria.
+
+### 1. Think Before Coding
+
+**Don't assume. Don't hide confusion. Surface tradeoffs.**
+
+- State your assumptions explicitly. If uncertain, ask.
+- If multiple interpretations exist, present them - don't pick silently.
+- If a simpler approach exists, say so. Push back when warranted.
+- If something is unclear, stop. Name what's confusing. Ask.
+
+### 2. Simplicity First
+
+**Minimum code that solves the problem. Nothing speculative.**
+
+- No features beyond what was asked.
+- No abstractions for single-use code.
+- No "flexibility" or "configurability" that wasn't requested.
+- No error handling for impossible scenarios.
+- If you write 200 lines and it could be 50, rewrite it.
+
+**Ask yourself: "Would a senior engineer say this is overcomplicated?" If yes, simplify.**
+
+### 3. Surgical Changes
+
+**Touch only what you must. Clean up only your own mess.**
+
+When editing existing code:
+
+- Don't "improve" adjacent code, comments, or formatting.
+- Don't refactor things that aren't broken.
+- Match existing style, even if you'd do it differently.
+- If you notice unrelated dead code, mention it - don't delete it.
+
+When your changes create orphans:
+
+- Remove imports/variables/functions that YOUR changes made unused.
+- Don't remove pre-existing dead code unless asked.
+
+**The test: Every changed line should trace directly to the user's request.**
+
+### 4. Goal-Driven Execution
+
+**Define success criteria. Loop until verified.**
+
+Transform tasks into verifiable goals:
+
+- "Add validation" → "Write tests for invalid inputs, then make them pass"
+- "Fix the bug" → "Write a test that reproduces it, then make it pass"
+- "Refactor X" → "Ensure tests pass before and after"
+
+For multi-step tasks, state a brief plan:
+
+```
+1. [Step] → verify: [check]
+2. [Step] → verify: [check]
+3. [Step] → verify: [check]
+```
+
+**Tradeoff:** These guidelines bias toward caution over speed. For trivial tasks (typo fixes, obvious one-liners), use judgment - not every change needs full rigor.
+
+---
+
 ## Refactoring
 
 ### When to Refactor
+
 - Code is hard to understand
 - Duplication exists
 - Functions are too long (>20-30 lines)
@@ -20,12 +99,13 @@ description: Essential development practices including code review, refactoring,
 ### Common Refactorings
 
 **Extract Function:**
+
 ```javascript
 // Before
 function processOrder(order) {
   // validate order
   if (!order.items || order.items.length === 0) {
-    throw new Error('No items');
+    throw new Error("No items");
   }
   // calculate total
   let total = 0;
@@ -43,7 +123,7 @@ function processOrder(order) {
 
 function validateOrder(order) {
   if (!order.items || order.items.length === 0) {
-    throw new Error('No items');
+    throw new Error("No items");
   }
 }
 
@@ -53,21 +133,27 @@ function calculateTotal(items) {
 ```
 
 **Replace Magic Numbers:**
+
 ```javascript
 // Before
-if (user.age >= 18) { /* ... */ }
+if (user.age >= 18) {
+  /* ... */
+}
 
 // After
 const MINIMUM_AGE = 18;
-if (user.age >= MINIMUM_AGE) { /* ... */ }
+if (user.age >= MINIMUM_AGE) {
+  /* ... */
+}
 ```
 
 **Simplify Conditionals:**
+
 ```javascript
 // Before
 function canVote(user) {
   if (user.age >= 18) {
-    if (user.citizenship === 'US') {
+    if (user.citizenship === "US") {
       return true;
     } else {
       return false;
@@ -79,11 +165,12 @@ function canVote(user) {
 
 // After
 function canVote(user) {
-  return user.age >= 18 && user.citizenship === 'US';
+  return user.age >= 18 && user.citizenship === "US";
 }
 ```
 
 ### Refactoring Rules
+
 - Make small, incremental changes
 - Run tests after each change
 - Don't refactor and add features simultaneously
@@ -94,6 +181,7 @@ function canVote(user) {
 ### Code Comments
 
 **When to Comment:**
+
 - Why, not what (code shows what)
 - Complex business logic
 - Non-obvious decisions
@@ -106,7 +194,9 @@ function canVote(user) {
 await retryWithBackoff(apiCall);
 
 // Process in batches to avoid memory issues with large datasets
-for (const batch of chunks(items, 1000)) { /* ... */ }
+for (const batch of chunks(items, 1000)) {
+  /* ... */
+}
 
 // ❌ Bad (states the obvious)
 // Increment i
@@ -133,6 +223,7 @@ function calculateShipping(weight, destination) {
 ```
 
 ### README Essentials
+
 - What the project does
 - How to install and run
 - Configuration options
@@ -144,12 +235,14 @@ function calculateShipping(weight, destination) {
 ### Commit Best Practices
 
 **Good Commits:**
+
 - Focused on single concern
 - Have clear commit messages
 - Are atomic (complete, working state)
 - Are pushed regularly
 
 **Commit Message Format:**
+
 ```
 Short summary (50 chars or less)
 
@@ -191,6 +284,7 @@ git revert <commit>     # Create new commit that undoes
 ### Error Handling Principles
 
 **Be Specific:**
+
 ```javascript
 // ❌ Bad
 catch (error) {
@@ -210,11 +304,13 @@ catch (error) {
 ```
 
 **Provide Context:**
+
 ```javascript
 throw new Error(`Failed to process order ${orderId}: ${error.message}`);
 ```
 
 **Don't Swallow Errors:**
+
 ```javascript
 // ❌ Bad
 try {
@@ -227,7 +323,7 @@ try {
 try {
   riskyOperation();
 } catch (e) {
-  logger.error('Risky operation failed', { error: e });
+  logger.error("Risky operation failed", { error: e });
   // Handle or re-throw
 }
 ```
@@ -245,33 +341,36 @@ try {
 
 ```javascript
 // Good logging
-logger.info('User login', { userId: user.id, ip: req.ip });
-logger.error('Payment failed', {
+logger.info("User login", { userId: user.id, ip: req.ip });
+logger.error("Payment failed", {
   orderId,
   error: error.message,
-  amount
+  amount,
 });
 
 // Don't log
 logger.debug(user.password); // ❌ Sensitive data
-logger.info('Starting loop iteration', { i }); // ❌ Too verbose
+logger.info("Starting loop iteration", { i }); // ❌ Too verbose
 ```
 
 ## Security Best Practices
 
 ### Input Validation
+
 - Validate all user input
 - Sanitize before use
 - Use parameterized queries (prevent SQL injection)
 - Whitelist, don't blacklist
 
 ### Authentication & Authorization
+
 - Use established libraries (don't roll your own crypto)
 - Hash passwords with salt (bcrypt, argon2)
 - Use HTTPS for sensitive data
 - Implement proper session management
 
 ### Common Vulnerabilities (OWASP Top 10)
+
 1. **SQL Injection**: Use parameterized queries
 2. **XSS**: Sanitize output, use CSP headers
 3. **Broken Auth**: Use secure session management
@@ -279,6 +378,7 @@ logger.info('Starting loop iteration', { i }); // ❌ Too verbose
 5. **Missing Access Control**: Verify permissions
 
 ### Never Do
+
 - ❌ Commit secrets to git
 - ❌ Log sensitive data
 - ❌ Trust user input
@@ -288,6 +388,7 @@ logger.info('Starting loop iteration', { i }); // ❌ Too verbose
 ## Performance
 
 ### Quick Wins
+
 - Add database indexes for frequent queries
 - Use caching for expensive operations
 - Lazy load when possible
@@ -295,15 +396,17 @@ logger.info('Starting loop iteration', { i }); // ❌ Too verbose
 - Optimize images and assets
 
 ### Profile Before Optimizing
+
 ```javascript
-console.time('operation');
+console.time("operation");
 expensiveOperation();
-console.timeEnd('operation');
+console.timeEnd("operation");
 ```
 
 ## Dependency Management
 
 ### Best Practices
+
 - Keep dependencies updated
 - Review security advisories
 - Minimize dependency count
@@ -324,6 +427,7 @@ pip-audit
 ## Code Organization
 
 ### File Structure
+
 - Group by feature, not by type
 - Keep related files together
 - Use meaningful names
@@ -349,6 +453,7 @@ models/
 ## Configuration
 
 ### Configuration Best Practices
+
 - Use environment variables for env-specific config
 - Never commit secrets
 - Provide defaults
@@ -371,6 +476,7 @@ const config = {
 ## Development Workflow
 
 ### Before Committing
+
 - [ ] Run tests
 - [ ] Run linter
 - [ ] Review your changes
@@ -378,6 +484,7 @@ const config = {
 - [ ] Remove debug code and console.logs
 
 ### Daily Practices
+
 - Pull latest changes before starting work
 - Commit frequently
 - Push regularly
@@ -387,6 +494,7 @@ const config = {
 ## Quick Reference: Best Practices
 
 **SOLID:**
+
 - Single Responsibility
 - Open/Closed
 - Liskov Substitution
@@ -394,6 +502,7 @@ const config = {
 - Dependency Inversion
 
 **Other Principles:**
+
 - DRY: Don't Repeat Yourself
 - KISS: Keep It Simple, Stupid
 - YAGNI: You Aren't Gonna Need It

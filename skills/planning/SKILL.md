@@ -19,6 +19,7 @@ Comprehensive planning from requirements to implementation.
 ## Overview
 
 Planning bridges the gap between initial requirements and code execution. This skill covers:
+
 1. **Requirements Analysis** - Extracting and defining what to build
 2. **Specification** - Documenting requirements as PRDs
 3. **Implementation Planning** - Breaking down into actionable tasks
