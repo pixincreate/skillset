@@ -1,6 +1,6 @@
 ---
 name: web-browser
-description: "Web browsing and interaction skills. Use when you need to search, navigate, or interact with web content. Auto-activates for: \"search the web\", \"open URL\", \"check website\", \"analyze page\"."
+description: 'Web browsing and interaction skills. Use when you need to search, navigate, or interact with web content. Auto-activates for: "search the web", "open URL", "check website", "analyze page".'
 ---
 
 # Web Browser Skill
@@ -12,6 +12,7 @@ description: "Web browsing and interaction skills. Use when you need to search, 
 ## When to Use This Skill
 
 This skill auto-activates when users request:
+
 - "Search the web for..."
 - "Open [URL]"
 - "Check the status of..."
@@ -31,10 +32,12 @@ This skill auto-activates when users request:
 ### 2. Search Strategy
 
 **Use specific, focused queries**:
+
 - ✅ `"error 500 Nginx proxy_pass configuration"`
 - ❌ `"website not working"`
 
 **Advanced search techniques**:
+
 - Site-specific: `site:example.com "error message"`
 - Filetype: `filetype:pdf configuration guide`
 - Exact phrase: `"exact error message"`
@@ -43,6 +46,7 @@ This skill auto-activates when users request:
 ### 3. Page Navigation
 
 **Effective page reading**:
+
 - Scan headings and subheadings
 - Look for tables of contents
 - Check documentation sections
@@ -52,6 +56,7 @@ This skill auto-activates when users request:
 ### 4. Information Extraction
 
 **Key techniques**:
+
 - Identify main points in first paragraph
 - Look for code examples for technical queries
 - Check documentation version
@@ -61,6 +66,7 @@ This skill auto-activates when users request:
 ### 5. Verification
 
 **Before acting on information**:
+
 - Check source reputation
 - Verify date (is this still relevant?)
 - Look for community validation
@@ -99,6 +105,7 @@ This skill auto-activates when users request:
 ```
 
 **Navigation tips**:
+
 - Look for version-specific documentation
 - Check examples first for quick understanding
 - Use search within documentation
@@ -109,24 +116,28 @@ This skill auto-activates when users request:
 ### Essential Tools
 
 **Elements/Inspector**:
+
 - Inspect HTML structure
 - Debug CSS in real-time
 - View computed styles
 - Edit DOM for testing
 
 **Console**:
+
 - Run JavaScript commands
 - View errors/warnings
 - Debug scripts
 - Test API calls
 
 **Network**:
+
 - Monitor HTTP requests
 - Analyze load times
 - Check headers/cookies
 - Debug API responses
 
 **Sources**:
+
 - Browse source files
 - Set breakpoints
 - Debug step-by-step
@@ -135,20 +146,22 @@ This skill auto-activates when users request:
 ### Common Developer Tasks
 
 **Check API endpoint**:
+
 ```javascript
 // In console
-fetch('/api/data')
-  .then(r => r.json())
-  .then(console.log)
+fetch("/api/data")
+  .then((r) => r.json())
+  .then(console.log);
 ```
 
 **Test page performance**:
+
 ```javascript
 // Measure render time
-performance.mark('start');
+performance.mark("start");
 // ... page actions
-performance.mark('end');
-performance.measure('render', 'start', 'end');
+performance.mark("end");
+performance.measure("render", "start", "end");
 ```
 
 ## Quick Reference Commands
@@ -175,6 +188,7 @@ curl -I https://example.com
 ### Identify Page Structure
 
 **Key indicators**:
+
 - Check `<title>` for page purpose
 - Look for meta description
 - Identify main content areas
@@ -182,6 +196,7 @@ curl -I https://example.com
 - Locate footer information
 
 **CSS selectors for analysis**:
+
 ```css
 /* Main content areas */
 main, article, .content, #main
@@ -196,20 +211,23 @@ header, footer, .header, .footer
 ### Content Extraction
 
 **Using browser console**:
+
 ```javascript
 // Extract all links
-const links = Array.from(document.querySelectorAll('a'))
-  .map(a => ({text: a.textContent, href: a.href}))
+const links = Array.from(document.querySelectorAll("a")).map((a) => ({
+  text: a.textContent,
+  href: a.href,
+}));
 
 // Extract main text content
-const mainText = document.querySelector('main')?.innerText
+const mainText = document.querySelector("main")?.innerText;
 
 // Get page metadata
 const meta = {
   title: document.title,
   description: document.querySelector('meta[name="description"]')?.content,
-  keywords: document.querySelector('meta[name="keywords"]')?.content
-}
+  keywords: document.querySelector('meta[name="keywords"]')?.content,
+};
 ```
 
 ## Paywall and Access Workarounds
@@ -217,16 +235,19 @@ const meta = {
 ### Alternative Access Methods
 
 **Textise dot iitty**:
+
 - Convert pages to plain text
 - Remove paywall restrictions
 - Simplify article reading
 
 **Reader Mode**:
+
 - Most browsers have built-in reader modes
 - Removes ads and extraneous content
 - Focuses on main article text
 
 **Archive.org**:
+
 - Check Wayback Machine snapshots
 - Access historical versions
 - Bypass some restrictions
@@ -243,6 +264,7 @@ const meta = {
 ## Web Navigation Checklist
 
 Before finalizing web research:
+
 - [ ] Searched with exact error message
 - [ ] Checked multiple sources
 - [ ] Verified documentation version

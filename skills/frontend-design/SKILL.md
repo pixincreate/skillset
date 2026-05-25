@@ -10,6 +10,7 @@ Create distinctive, production-grade frontend interfaces that avoid generic aest
 ## Overview
 
 This skill covers:
+
 - Design guidelines for web interfaces
 - Interface design principles
 - Creative frontend implementation
@@ -17,6 +18,7 @@ This skill covers:
 ## When to Use
 
 This skill auto-activates when users request:
+
 - "Build a web component"
 - "Create a UI"
 - "Design a page"
@@ -27,9 +29,11 @@ This skill auto-activates when users request:
 ## Available References
 
 ### Design Guidelines
+
 - **guidelines.md** - Web interface guidelines covering accessibility, forms, animation, typography, and best practices
 
 ### Interface Design
+
 - **interfaces.md** - High-level design philosophy for dashboards, apps, and interactive products
 
 ## Usage
@@ -46,10 +50,10 @@ cat frontend-design/reference/interfaces.md
 
 ## Quick Reference
 
-| Reference | Purpose |
-|-----------|---------|
+| Reference     | Purpose                                              |
+| ------------- | ---------------------------------------------------- |
 | guidelines.md | Web UI rules (accessibility, forms, animation, etc.) |
-| interfaces.md | Design philosophy (intent, craft, layering) |
+| interfaces.md | Design philosophy (intent, craft, layering)          |
 
 ## Design Principles
 

@@ -10,6 +10,7 @@ Review files for compliance with Web Interface Guidelines.
 ## Overview
 
 This skill covers:
+
 - Web accessibility guidelines
 - Form design best practices
 - Animation guidelines
@@ -19,6 +20,7 @@ This skill covers:
 ## When to Use
 
 This skill auto-activates when users request:
+
 - "Review my UI"
 - "Check accessibility"
 - "Audit design"
@@ -28,6 +30,7 @@ This skill auto-activates when users request:
 ## Available References
 
 ### Detailed Guidelines
+
 - **web-interface.md** - Comprehensive web interface guidelines
 
 ## How It Works
