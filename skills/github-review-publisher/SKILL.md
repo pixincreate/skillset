@@ -12,6 +12,7 @@ description: "Create and publish GitHub PR review comments from code quality iss
 ## When to Use This Skill
 
 This skill auto-activates when users request:
+
 - "Create review comments"
 - "Publish review to GitHub"
 - "Post these issues as review"
@@ -23,16 +24,18 @@ This skill auto-activates when users request:
 ### 1. Collect Review Data
 
 **Input Sources**:
+
 - Issues from code-quality-review skill
 - Issues from pr-analysis (context)
 - Custom issue list (direct input)
 
 **Issue Structure Required**:
+
 ```yaml
 file: "path/to/file.rs"
-line_number: 123           # Line in NEW file
+line_number: 123 # Line in NEW file
 line_reference: "NEW_FILE" # Must be "NEW_FILE"
-commit_sha: "abc123..."    # PR HEAD commit
+commit_sha: "abc123..." # PR HEAD commit
 severity: "CRITICAL|WARNING|SUGGESTION"
 issue: "Description"
 current_code: "Problematic code"
@@ -42,25 +45,26 @@ suggested_fix: "Corrected code"
 ### 2. Normalize Input (Backward Compatibility)
 
 **Handle old formats**:
+
 ```yaml
 # Convert old format to new
-if "line" exists and not "line_number":
-  line_number = line
+if "line" exists and not "line_number": line_number = line
   line_reference = "NEW_FILE"
 
 # Default missing fields
-if not "line_reference":
-  line_reference = "NEW_FILE"
+if not "line_reference": line_reference = "NEW_FILE"
 ```
 
 ### 3. Fetch PR Diff and Extract Valid Ranges
 
 **Get PR diff**:
+
 ```bash
 gh pr diff {pr-number} --repo {owner}/{repo} > /tmp/pr_diff.txt
 ```
 
 **Parse diff hunks**:
+
 ```bash
 # Extract hunk headers: @@ -start,count +start,count @@
 grep -E '^@@ -[0-9]+(,[0-9]+)? \+[0-9]+(,[0-9]+)? @@' /tmp/pr_diff.txt
@@ -68,6 +72,7 @@ grep -E '^@@ -[0-9]+(,[0-9]+)? \+[0-9]+(,[0-9]+)? @@' /tmp/pr_diff.txt
 ```
 
 **Build valid line map**:
+
 ```python
 valid_ranges = {}  # file -> set of valid lines
 
@@ -84,6 +89,7 @@ for hunk in hunks:
 ### 4. Validate Each Issue
 
 **Validation Steps**:
+
 ```bash
 is_line_valid() {
     local file="$1"
@@ -111,17 +117,20 @@ is_line_valid() {
 ```
 
 **Classify Issues**:
+
 - **VALID**: Line exists and is in changed hunks
 - **SKIPPED**: Invalid line number (detailed reason)
 
 ### 5. Create Pending Review via gh CLI
 
 **Get PR HEAD commit**:
+
 ```bash
 HEAD_SHA=$(gh pr view {pr} --repo {owner}/{repo} --json headRefOid -q '.headRefOid')
 ```
 
 **Create review with comments**:
+
 ```bash
 # Base review call
 gh api repos/{owner}/{repo}/pulls/{pr}/reviews \
@@ -145,32 +154,37 @@ done
 
 ### Severity Emojis and Priority
 
-| Severity | Emoji | Priority | Color |
-|----------|-------|----------|-------|
-| CRITICAL | 🔴 | P0 | Red |
-| WARNING   | 🟡 | P1 | Yellow |
-| SUGGESTION | 🟢 | P2 | Green |
+| Severity   | Emoji | Priority | Color  |
+| ---------- | ----- | -------- | ------ |
+| CRITICAL   | 🔴    | P0       | Red    |
+| WARNING    | 🟡    | P1       | Yellow |
+| SUGGESTION | 🟢    | P2       | Green  |
 
 ### Comment Structure
 
 **Critical Issue Template**:
-```markdown
+
+````markdown
 🔴 **Critical** - {Category}
 
 {Detailed explanation of issue and impact}
 
 **Current**:
+
 ```rust
 {problematic_code}
 ```
+````
 
 **Suggested Fix**:
+
 ```rust
 {fixed_code}
 ```
 
 **Impact**: {Why this must be fixed}
-```
+
+````
 
 **Warning Template**:
 ```markdown
@@ -180,20 +194,24 @@ done
 
 **Line**: {file}:{line}
 **Fix**: {quick_fix_description}
-```
+````
 
 **Suggestion Template**:
-```markdown
+
+````markdown
 🟢 **Suggestion** - {Improvement type}
 
 {Suggested improvement}
 
 **Example**:
+
 ```diff
 - {current}
 + {improved}
 ```
-```
+````
+
+````
 
 ## Output Structure
 
@@ -218,9 +236,10 @@ done
 **Current**:
 ```rust
 use hyperswitch_domain_models::RouterData;
-```
+````
 
 **Suggested Fix**:
+
 ```rust
 use domain_types::router_data_v2::RouterDataV2;
 ```
@@ -232,6 +251,7 @@ use domain_types::router_data_v2::RouterDataV2;
 ### 📄 tests/connector_tests/stripe.rs
 
 **Line 78** • 🟡 Important - Test Coverage
+
 > Missing test for error scenarios
 
 **Fix**: Add test case for API error responses
@@ -245,13 +265,15 @@ use domain_types::router_data_v2::RouterDataV2;
 ✅ **{total} Pending Review Comments Created**
 
 **Next Steps:**
+
 1. Go to GitHub PR: {pr_url}/files
 2. Review pending comments on specific lines
 3. Manually approve/edit/delete each comment
 4. Submit your review when ready
 
 ⚠️ **Comments are NOT posted publicly yet** - pending your approval in GitHub UI.
-```
+
+````
 
 ### Skipped Comments Report
 
@@ -269,18 +291,18 @@ use domain_types::router_data_v2::RouterDataV2;
    **Reason**: Line 5 not in changed lines (only lines 10-25 were modified)
    **Changed Lines**: 10-25
    **Action**: Check if comment should be on line 10-25
-```
+````
 
 ## Error Handling
 
 ### Common GitHub API Errors
 
-| Error | Cause | Solution |
-|-------|-------|----------|
-| 422 Unprocessable Entity | Invalid line number | Use line validation before API call |
-| 403 Forbidden | No write permission | Check repository permissions |
-| 404 Not Found | PR/commit not found | Verify PR exists and is not merged |
-| 422 Review already exists | Duplicate review | Use existing review or delete first |
+| Error                     | Cause               | Solution                            |
+| ------------------------- | ------------------- | ----------------------------------- |
+| 422 Unprocessable Entity  | Invalid line number | Use line validation before API call |
+| 403 Forbidden             | No write permission | Check repository permissions        |
+| 404 Not Found             | PR/commit not found | Verify PR exists and is not merged  |
+| 422 Review already exists | Duplicate review    | Use existing review or delete first |
 
 ### Recovery Strategies
 
@@ -292,6 +314,7 @@ use domain_types::router_data_v2::RouterDataV2;
 ## Validation Checklist
 
 Before creating review:
+
 - [ ] All issues normalized with required fields
 - [ ] PR diff fetched and parsed
 - [ ] Line numbers validated against changed hunks
@@ -304,6 +327,7 @@ Before creating review:
 ## Integration Patterns
 
 ### Input from pr-analysis
+
 ```yaml
 pr_info:
   pr_number: 238
@@ -314,6 +338,7 @@ pr_info:
 ```
 
 ### Input from code-quality-review
+
 ```yaml
 issues:
   - file: "backend/file.rs"
@@ -325,6 +350,7 @@ issues:
 ```
 
 ### Workflow Integration
+
 ```
 pr-analysis → (metadata, files, sha)
     ↓
@@ -353,6 +379,7 @@ gh pr view {pr} --repo {owner}/{repo} --json reviewComments
 ## Best Practices
 
 ### Before Publishing
+
 1. Verify all line numbers
 2. Check file existence
 3. Validate permissions
@@ -360,6 +387,7 @@ gh pr view {pr} --repo {owner}/{repo} --json reviewComments
 5. Include helpful suggested fixes
 
 ### Comment Quality
+
 1. Be specific about issues
 2. Explain impact clearly
 3. Provide working code examples

@@ -12,24 +12,28 @@ description: Effective team collaboration and communication practices. Use when 
 ## Communication Best Practices
 
 ### Be Clear and Specific
+
 - State what you need or found
 - Provide context and background
 - Include links, file references (file.ts:123)
 - Use examples when helpful
 
 ### Be Concise
+
 - Get to the point
 - Use bullet points for clarity
 - Break down complex information
 - Don't overwhelm with details
 
 ### Be Timely
+
 - Respond within reasonable time
 - Don't block others
 - Communicate delays proactively
 - Update status regularly
 
 ### Be Professional
+
 - Assume good intent
 - Focus on code, not person
 - Be constructive, not critical
@@ -40,12 +44,15 @@ description: Effective team collaboration and communication practices. Use when 
 ### Enhanced GitHub Review Workflow
 
 **5-Step Review Process:**
+
 1. **Review Analysis** (from code-quality-review skill):
+
    - Critical issues (blockers): Security, architecture breaks
    - Warnings: Logic errors, quality concerns
    - Suggestions: Style, documentation improvements
 
 2. **Review Scoring**:
+
    - Score = 100 - (Critical×20) - (Warnings×5) - (Suggestions×1)
    - ✨ 95-100: Auto-approve
    - ✅ 90-94: Approve
@@ -54,11 +61,13 @@ description: Effective team collaboration and communication practices. Use when 
    - 🚨 0-59: Critical block
 
 3. **Line Number Specification**:
+
    - **ALWAYS** reference the NEW file version (PR HEAD commit)
    - Format: `file:line_number` (e.g., `src/file.rs:45`)
    - Include `line_reference: "NEW_FILE"` in all comments
 
 4. **Comment Structure**:
+
    ```yaml
    - severity: CRITICAL | WARNING | SUGGESTION
      file: path/to/file
@@ -83,36 +92,43 @@ description: Effective team collaboration and communication practices. Use when 
 ### GitHub Review Templates
 
 **Critical Issues Template:**
-```
+
+````
 🚨 {issue} - {impact}
 
 Current:
 ```{language}
 {current_code}
-```
+````
 
 Fix:
+
 ```{language}
 {suggested_fix}
 ```
+
 ```
 
 **Warning Template:**
 ```
+
 ⚠️ {issue} - {reason}
 
 Line: {file}:{line}
+
 ```
 
 **Suggestion Template:**
 ```
+
 💡 {suggestion} - {example}
 
 ```diff
 - {current}
 + {improved}
 ```
-```
+
+````
 
 ### Review Best Practices
 
@@ -161,9 +177,10 @@ This workflow works with:
 - Breaking changes: [if any]
 - Performance impact: [if significant]
 - Security considerations: [if applicable]
-```
+````
 
 **Responding to Feedback:**
+
 - Address all comments
 - Explain reasoning if disagreeing
 - Ask questions if unclear
@@ -176,6 +193,7 @@ This workflow works with:
 **Effective Review Comments:**
 
 ✅ **Good:**
+
 ```
 This could cause a performance issue with large datasets.
 Consider using pagination here:
@@ -183,11 +201,13 @@ users.paginate(page: params[:page], per_page: 50)
 ```
 
 ❌ **Not Helpful:**
+
 ```
 This is wrong.
 ```
 
 **Comment Types:**
+
 - **🚨 Blocking**: Must be fixed (security, bugs, data loss)
 - **💡 Suggestion**: Should consider (performance, maintainability)
 - **❓ Question**: Seeking understanding
@@ -195,6 +215,7 @@ This is wrong.
 - **✅ Praise**: Acknowledge good code
 
 **Review Checklist:**
+
 - [ ] Code is correct and logical
 - [ ] Tests cover new code
 - [ ] No security vulnerabilities
@@ -208,12 +229,14 @@ This is wrong.
 ### Roles
 
 **Driver (typing):**
+
 - Focus on implementation
 - Think tactically
 - Communicate what you're doing
 - Ask for input
 
 **Navigator (reviewing):**
+
 - Think strategically
 - Consider edge cases
 - Look ahead to next steps
@@ -221,6 +244,7 @@ This is wrong.
 - Suggest improvements
 
 ### Best Practices
+
 - Switch roles every 15-30 minutes
 - Communicate continuously
 - Stay engaged (both people)
@@ -230,6 +254,7 @@ This is wrong.
 - Share keyboard/control equally
 
 ### Remote Pairing
+
 - Use screen sharing effectively
 - Have good audio setup
 - Use collaborative editors (VSCode Live Share)
@@ -242,35 +267,42 @@ This is wrong.
 ### For Remote/Distributed Teams
 
 **Documentation:**
+
 - Write decisions and context down
 - Keep wiki/docs updated
 - Record meetings when helpful
 - Use written communication well
 
 **Status Updates:**
+
 - Update ticket/issue status
 - Leave clear handoff notes
 - Document blockers
 - Note what's done and what's next
 
 **Example Handoff:**
+
 ```markdown
 ## Status Update - Feature X
 
 **Completed:**
+
 - API endpoint implemented (src/api/users.ts:45)
 - Tests written and passing
 - Database migration created
 
 **In Progress:**
+
 - Frontend integration (50% done)
 - Working on form validation
 
 **Blocked:**
+
 - Waiting for design approval on error states
 - Need API key for third-party service
 
 **Next Steps:**
+
 1. Complete form validation
 2. Add loading states
 3. Update documentation
@@ -279,6 +311,7 @@ This is wrong.
 ## Knowledge Sharing
 
 ### Documentation
+
 - Write clear README files
 - Document architecture decisions (ADRs)
 - Create runbooks for common tasks
@@ -286,6 +319,7 @@ This is wrong.
 - Write helpful commit messages
 
 ### Mentoring
+
 - Pair program to teach
 - Review code educatively
 - Share resources and learnings
@@ -293,6 +327,7 @@ This is wrong.
 - Provide context, not just answers
 
 ### Sharing Learnings
+
 - Demo new features to team
 - Share post-mortems of incidents
 - Document solutions to problems
@@ -302,12 +337,14 @@ This is wrong.
 ## Meeting Effectiveness
 
 ### Before Meetings
+
 - Have clear agenda
 - Share pre-reading materials
 - Invite only necessary people
 - Define expected outcomes
 
 ### During Meetings
+
 - Start and end on time
 - Stay on topic
 - Take notes
@@ -315,6 +352,7 @@ This is wrong.
 - Summarize decisions
 
 ### After Meetings
+
 - Share notes with team
 - Follow up on action items
 - Update documentation
@@ -323,6 +361,7 @@ This is wrong.
 ## Giving Feedback
 
 ### SBI Framework
+
 **Situation-Behavior-Impact:**
 
 ```
@@ -334,6 +373,7 @@ Could you wait until others finish before jumping in?
 ```
 
 ### Feedback Best Practices
+
 - Be timely (soon after event)
 - Be specific and concrete
 - Focus on behavior, not personality
@@ -357,6 +397,7 @@ Could you wait until others finish before jumping in?
 ### Handling Disagreements
 
 **Technical Disagreements:**
+
 1. Understand each perspective
 2. Focus on facts and data
 3. List pros/cons of each approach
@@ -366,6 +407,7 @@ Could you wait until others finish before jumping in?
 7. Commit once decided
 
 **When to Escalate:**
+
 - Can't reach consensus
 - Significant impact or risk
 - Need broader input
@@ -373,6 +415,7 @@ Could you wait until others finish before jumping in?
 - Outside team's authority
 
 **Disagreement Etiquette:**
+
 - Disagree respectfully
 - Listen to understand
 - Assume competence and good intent
@@ -383,6 +426,7 @@ Could you wait until others finish before jumping in?
 ## Cross-Functional Collaboration
 
 ### With Product Managers
+
 - Understand business context
 - Provide technical feasibility input
 - Propose alternative solutions
@@ -390,6 +434,7 @@ Could you wait until others finish before jumping in?
 - Give realistic estimates
 
 ### With Designers
+
 - Understand design intent
 - Provide early feasibility feedback
 - Collaborate on user experience
@@ -397,6 +442,7 @@ Could you wait until others finish before jumping in?
 - Respect design decisions
 
 ### With QA/Testing
+
 - Provide test environments
 - Explain implementation details
 - Collaborate on test strategies
@@ -408,16 +454,19 @@ Could you wait until others finish before jumping in?
 ### Choose Appropriately
 
 **Synchronous (Real-time):**
+
 - Video call: Complex discussions, pair programming
 - Chat: Quick questions, urgent issues
 
 **Asynchronous:**
+
 - Email: Formal communication, external parties
 - Issues/Tickets: Feature requests, bugs, tracking
 - PR comments: Code-specific discussion
 - Wiki/Docs: Persistent knowledge, processes
 
 ### Channel Guidelines
+
 - Use public channels when possible (more can help/learn)
 - Use DMs for personal/sensitive topics
 - @mention for specific people's input
@@ -427,6 +476,7 @@ Could you wait until others finish before jumping in?
 ## Building Trust
 
 ### Trust-Building Behaviors
+
 - **Be reliable**: Do what you say
 - **Be transparent**: Share information
 - **Be consistent**: Act predictably
@@ -439,6 +489,7 @@ Could you wait until others finish before jumping in?
 ## Remote Work Best Practices
 
 ### Communication
+
 - Over-communicate status
 - Be responsive during work hours
 - Set and respect boundaries
@@ -446,12 +497,14 @@ Could you wait until others finish before jumping in?
 - Document more than in-person
 
 ### Presence
+
 - Keep calendar updated
 - Communicate availability
 - Join video with camera when possible
 - Be present in meetings (no multitasking)
 
 ### Building Relationships
+
 - Virtual coffee chats
 - Participate in team building
 - Share appropriately
@@ -461,6 +514,7 @@ Could you wait until others finish before jumping in?
 ## Collaboration Anti-Patterns
 
 **Avoid:**
+
 - **Hero culture**: Doing everything yourself
 - **Gatekeeping**: Making it hard for others
 - **Information hoarding**: Not sharing knowledge
@@ -472,18 +526,21 @@ Could you wait until others finish before jumping in?
 ## Quick Reference: Good Practices
 
 ### Daily
+
 - Check messages and respond
 - Update ticket status
 - Communicate blockers
 - Help teammates when able
 
 ### Weekly
+
 - Share learnings
 - Give feedback
 - Update documentation
 - Reflect on processes
 
 ### Always
+
 - Communicate clearly
 - Be respectful
 - Share knowledge

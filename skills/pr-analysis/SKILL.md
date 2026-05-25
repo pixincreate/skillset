@@ -1,6 +1,6 @@
 ---
 name: pr-analysis
-description: "Fetch and analyze pull request data from GitHub repositories. Use when you need to understand PR changes, review code modifications, or analyze scope of pull requests. Auto-activates for: \"analyze PR\", \"fetch pull request\", \"get PR details\", \"what changed in PR\", \"review PR #123\"."
+description: 'Fetch and analyze pull request data from GitHub repositories. Use when you need to understand PR changes, review code modifications, or analyze scope of pull requests. Auto-activates for: "analyze PR", "fetch pull request", "get PR details", "what changed in PR", "review PR #123".'
 ---
 
 # PR Analysis Skill
@@ -12,6 +12,7 @@ description: "Fetch and analyze pull request data from GitHub repositories. Use 
 ## When to Use This Skill
 
 This skill auto-activates when users request:
+
 - "Analyze PR #123"
 - "What changed in pull request 456?"
 - "Get details for PR from owner/repo"
@@ -24,12 +25,14 @@ This skill auto-activates when users request:
 ### 1. Parse Input
 
 **Accepts multiple formats**:
+
 - PR number only (auto-detects repo from current directory)
 - Full PR URL (https://github.com/owner/repo/pull/123)
 - PR number + explicit repository
 - Repository name + PR number
 
 **Auto-detection**:
+
 ```bash
 # From git remote
 git remote get-url origin
@@ -46,6 +49,7 @@ gh pr view {pr-number} --repo {owner}/{repo} \
 ```
 
 **Returns**:
+
 - PR number and title
 - Author and state (OPEN/CLOSED/MERGED)
 - Branch information (head/base)
@@ -61,6 +65,7 @@ gh pr diff {pr-number} --repo {owner}/{repo} --name-only
 ```
 
 **Categorize files by type**:
+
 - Connector files: `backend/connector-integration/src/connectors/**`
 - Core domain: `backend/domain_types/**`
 - Tests: `**/*test*.rs`, `**/tests/**`
@@ -75,6 +80,7 @@ gh pr diff {pr-number} --repo {owner}/{repo}
 ```
 
 **Analyze diff for**:
+
 - Added/removed lines
 - Function signature changes
 - Import modifications
@@ -83,6 +89,7 @@ gh pr diff {pr-number} --repo {owner}/{repo}
 ### 5. Analyze Change Scope
 
 **Primary categories**:
+
 - `connector_integration` - New connectors or integration changes
 - `core_domain` - Domain model modifications
 - `api_changes` - Request/response structure changes
@@ -91,6 +98,7 @@ gh pr diff {pr-number} --repo {owner}/{repo}
 - `tests` - Test additions/modifications
 
 **Connector-specific analysis**:
+
 ```yaml
 if connector_files:
   connector_name: # Extract from file path
@@ -166,6 +174,7 @@ connector_details:
 ### New Connector Detection
 
 **Indicators**:
+
 - New file in `backend/connector-integration/src/connectors/`
 - Configuration file added
 - Tests created for new connector
@@ -174,6 +183,7 @@ connector_details:
 ### Security-Sensitive Changes
 
 **Look for**:
+
 - API key handling
 - Authentication flows
 - Secret management
@@ -182,6 +192,7 @@ connector_details:
 ### Breaking Changes Detection
 
 **Check for**:
+
 - Domain type modifications
 - API response structure changes
 - Required field additions
@@ -256,6 +267,7 @@ gh pr view {pr} --repo {owner}/{repo} --json headRefOid -q '.headRefOid'
 ## Verification Checklist
 
 Before completing PR analysis:
+
 - [ ] PR exists and is accessible
 - [ ] Repository authenticated with GitHub CLI
 - [ ] All relevant files identified
