@@ -10,6 +10,7 @@ Plan and execute refactors safely with a step-by-step path from current to targe
 ## Overview
 
 This skill helps plan:
+
 - Incremental refactors
 - Large-scale rewrites
 - Pattern migrations
@@ -21,11 +22,13 @@ This skill helps plan:
 ### Phase 1: Assess
 
 1. **Understand current state**
+
    - What does the code do?
    - How is it used?
    - What's broken/risky?
 
 2. **Define target state**
+
    - What should it look like?
    - What problems does it solve?
    - What's the win?
@@ -48,6 +51,7 @@ Target: [Final state]
 ```
 
 **Rules:**
+
 - Each step should be independently testable
 - Each step should leave system working
 - Each step should reduce risk for next step
@@ -71,6 +75,7 @@ After:  Big function delegates to smaller functions
 ```
 
 Steps:
+
 1. Identify logical chunks
 2. Create extracted functions (callers unchanged)
 3. Redirect calls to new functions
@@ -84,6 +89,7 @@ After:  Clear names, centralized usage
 ```
 
 Steps:
+
 1. Add new names alongside old
 2. Update all references to new names
 3. Remove old names
@@ -97,6 +103,7 @@ After:  New system side-by-side, traffic migrated
 ```
 
 Steps:
+
 1. Build new system alongside old
 2. Instrument both for comparison
 3. Route small percentage to new
@@ -111,6 +118,7 @@ After:  Modular with clear boundaries
 ```
 
 Steps:
+
 1. Identify module boundary
 2. Create new module
 3. Route new functionality to new module
@@ -125,6 +133,7 @@ After:  Gradual rollout with kill switch
 ```
 
 Steps:
+
 1. Implement new behavior with flag
 2. Default flag to old behavior
 3. Enable for small percentage
@@ -136,18 +145,19 @@ Steps:
 
 When planning, answer:
 
-| Question | Why It Matters |
-|----------|----------------|
+| Question                           | Why It Matters   |
+| ---------------------------------- | ---------------- |
 | What's the risk of NOT doing this? | Justifies effort |
-| What's the simplest first step? | Gets momentum |
-| How do we verify it works? | Confidence |
-| How do we rollback? | Safety |
-| What's the test coverage? | Risk |
-| Who's affected? | Communication |
+| What's the simplest first step?    | Gets momentum    |
+| How do we verify it works?         | Confidence       |
+| How do we rollback?                | Safety           |
+| What's the test coverage?          | Risk             |
+| Who's affected?                    | Communication    |
 
 ## Warning Signs
 
 Stop and reassess if:
+
 - More than 10 steps planned
 - Any step takes more than 4 hours
 - Breaking changes cluster together
@@ -157,6 +167,7 @@ Stop and reassess if:
 ## Rollback Protocol
 
 Always know:
+
 - What commit to revert to?
 - How to verify rollback worked?
 - What data might need cleanup?
@@ -185,3 +196,12 @@ For each refactor:
 ## Success Criteria
 [How to know done]
 ```
+
+---
+
+## Related Skills
+
+- **diagnose** - For debugging if issues arise during refactoring
+- **architecture** - For large-scale architectural refactoring decisions
+- **planning** - For integrating refactoring into implementation plans
+- **testing** - For ensuring refactors don't break behavior (tests should survive)

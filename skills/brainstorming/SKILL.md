@@ -56,7 +56,28 @@ digraph brainstorming {
 
 ## The Process
 
-**Understanding the idea:**
+**First: Explore the domain context:**
+
+1. Check for `CONTEXT.md` at the repo root. This is the project's **ubiquitous language glossary**.
+
+   - Read it to understand how the project names concepts
+   - Use those terms consistently
+   - If user says something conflicting with `CONTEXT.md`, surface it immediately
+
+2. Check for `docs/adr/` directory. These are Architecture Decision Records.
+
+   - Read any relevant to the area you're exploring
+   - **Do not re-litigate recorded decisions**
+   - If user wants to go against an ADR, ask: "This contradicts ADR-0007. Should we revisit that decision, or is there something I'm missing?"
+
+3. Explore the codebase for existing patterns:
+   - Similar features already implemented
+   - Dependencies in use
+   - Middleware, utilities, helpers
+
+**If a question can be answered from the codebase or existing docs, don't ask the user.**
+
+**Then: Understanding the idea:**
 
 - Check out the current project state first (files, docs, recent commits)
 - Ask questions one at a time to refine the idea
@@ -99,3 +120,11 @@ digraph brainstorming {
 - **Explore alternatives** - Always propose 2-3 approaches before settling
 - **Incremental validation** - Present design, get approval before moving on
 - **Be flexible** - Go back and clarify when something doesn't make sense
+
+---
+
+## Related Skills
+
+- **planning** - After brainstorming design is approved, use planning for implementation planning and gatekeeping
+- **rapidfire** - For deep alignment when requirements are fundamentally unclear
+- **architecture** - For large-scale system design decisions

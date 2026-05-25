@@ -12,22 +12,26 @@ description: Systematic problem-solving for complex technical challenges. Use wh
 ## Problem-Solving Process
 
 1. **Understand the Problem**
+
    - What exactly is the problem?
    - What is expected vs actual behavior?
    - What are the constraints?
    - What are success criteria?
 
 2. **Break Down the Problem**
+
    - Decompose into smaller sub-problems
    - Identify dependencies
    - Determine what's critical vs nice-to-have
 
 3. **Generate Solutions**
+
    - Brainstorm at least 3 approaches
    - Consider both simple and complex solutions
    - Look for similar solved problems
 
 4. **Evaluate Trade-offs**
+
    - Time complexity (Big O)
    - Space complexity
    - Maintainability
@@ -42,26 +46,31 @@ description: Systematic problem-solving for complex technical challenges. Use wh
 ## Common Problem-Solving Strategies
 
 ### Divide and Conquer
+
 Break into independent sub-problems, solve each, combine results.
 
 **Good for:** Sorting, searching, tree problems
 
 ### Work Backwards
+
 Start from desired outcome, work backwards to current state.
 
 **Good for:** Planning, pathfinding, puzzle solving
 
 ### Simplify First
+
 Solve simpler version, then add complexity incrementally.
 
 **Good for:** Complex algorithms, unclear requirements
 
 ### Pattern Recognition
+
 Match problem to known patterns/algorithms.
 
 **Good for:** Common CS problems, established solutions exist
 
 ### Binary Search on Answer
+
 When answer is in a range, binary search the solution space.
 
 **Good for:** Optimization problems, "find minimum/maximum X"
@@ -69,16 +78,19 @@ When answer is in a range, binary search the solution space.
 ## Algorithm Selection
 
 ### Searching
+
 - **Linear search**: O(n) - unsorted data
 - **Binary search**: O(log n) - sorted data
 - **Hash table**: O(1) average - key-value lookup
 
 ### Sorting
+
 - **Built-in sort**: O(n log n) - use when possible
 - **Counting sort**: O(n + k) - limited range integers
 - **Quick select**: O(n) average - find kth element
 
 ### Data Structures
+
 - **Array/List**: Sequential access, O(1) index lookup
 - **Hash Map/Dict**: O(1) average key lookup
 - **Set**: O(1) membership, uniqueness
@@ -88,18 +100,22 @@ When answer is in a range, binary search the solution space.
 - **Tree**: O(log n) operations for balanced trees
 
 ### Graph Algorithms
+
 - **BFS**: Shortest path, level-order traversal
 - **DFS**: Explore all paths, cycle detection
 - **Dijkstra**: Shortest path with weights
 - **Topological sort**: Dependency ordering
 
 ### Dynamic Programming
+
 Identify:
+
 1. Overlapping sub-problems
 2. Optimal substructure
 3. Recurrence relation
 
 **Approaches:**
+
 - **Memoization** (top-down): Cache recursive results
 - **Tabulation** (bottom-up): Build table iteratively
 
@@ -117,11 +133,13 @@ function fib(n) {
 ## Performance Optimization
 
 ### Identify Bottlenecks
+
 1. **Profile first** - don't guess
 2. Focus on biggest impact
 3. Measure before and after
 
 ### Optimization Strategies
+
 - **Algorithmic**: Better algorithm (O(n²) → O(n log n))
 - **Caching**: Store computed results
 - **Lazy evaluation**: Compute only when needed
@@ -130,6 +148,7 @@ function fib(n) {
 - **Parallelization**: Use multiple cores/threads
 
 ### Common Bottlenecks
+
 - **N+1 queries**: Load related data in single query
 - **Nested loops**: Often can be optimized
 - **Unnecessary work**: Cache or skip redundant operations
@@ -138,16 +157,17 @@ function fib(n) {
 
 ## Decision-Making Framework
 
-| Criterion | Option A | Option B | Option C |
-|-----------|----------|----------|----------|
-| **Time Complexity** | | | |
-| **Space Complexity** | | | |
-| **Code Complexity** | | | |
-| **Maintainability** | | | |
-| **Time to Implement** | | | |
-| **Risk** | | | |
+| Criterion             | Option A | Option B | Option C |
+| --------------------- | -------- | -------- | -------- |
+| **Time Complexity**   |          |          |          |
+| **Space Complexity**  |          |          |          |
+| **Code Complexity**   |          |          |          |
+| **Maintainability**   |          |          |          |
+| **Time to Implement** |          |          |          |
+| **Risk**              |          |          |          |
 
 Choose based on:
+
 - Requirements and constraints
 - Long-term vs short-term needs
 - Team expertise
@@ -156,30 +176,38 @@ Choose based on:
 ## Problem-Solving Heuristics
 
 ### Occam's Razor
+
 Simplest solution is usually best.
 
 ### Pareto Principle (80/20)
+
 80% of effects from 20% of causes. Focus on high-impact areas.
 
 ### YAGNI
+
 You Aren't Gonna Need It. Don't over-engineer for hypothetical futures.
 
 ### Rubber Duck Debugging
+
 Explain problem out loud. Often reveals solution.
 
 ### Five Whys
+
 Ask "why" repeatedly to find root cause.
 
 ### Take Breaks
+
 Fresh perspective often leads to breakthroughs.
 
 ## Common Patterns
 
 ### Two Pointers
+
 ```javascript
 // Example: Find pair with target sum in sorted array
 function findPair(arr, target) {
-  let left = 0, right = arr.length - 1;
+  let left = 0,
+    right = arr.length - 1;
   while (left < right) {
     const sum = arr[left] + arr[right];
     if (sum === target) return [left, right];
@@ -191,10 +219,12 @@ function findPair(arr, target) {
 ```
 
 ### Sliding Window
+
 ```javascript
 // Example: Max sum of k consecutive elements
 function maxSum(arr, k) {
-  let maxSum = 0, windowSum = 0;
+  let maxSum = 0,
+    windowSum = 0;
   for (let i = 0; i < k; i++) windowSum += arr[i];
   maxSum = windowSum;
 
@@ -207,6 +237,7 @@ function maxSum(arr, k) {
 ```
 
 ### Hash Map for O(1) Lookup
+
 ```javascript
 // Example: Two sum problem
 function twoSum(nums, target) {
@@ -236,6 +267,7 @@ function twoSum(nums, target) {
 ## Validation Checklist
 
 Before finalizing solution:
+
 - [ ] Solves the original problem
 - [ ] Handles edge cases (empty, single element, large input)
 - [ ] Correct time complexity
@@ -247,15 +279,15 @@ Before finalizing solution:
 
 ## Time Complexity Quick Reference
 
-| Complexity | Name | Example |
-|------------|------|---------|
-| O(1) | Constant | Hash lookup, array access |
-| O(log n) | Logarithmic | Binary search |
-| O(n) | Linear | Single loop, linear search |
-| O(n log n) | Linearithmic | Efficient sorting |
-| O(n²) | Quadratic | Nested loops |
-| O(2ⁿ) | Exponential | Recursive fibonacci (naive) |
-| O(n!) | Factorial | Generate all permutations |
+| Complexity | Name         | Example                     |
+| ---------- | ------------ | --------------------------- |
+| O(1)       | Constant     | Hash lookup, array access   |
+| O(log n)   | Logarithmic  | Binary search               |
+| O(n)       | Linear       | Single loop, linear search  |
+| O(n log n) | Linearithmic | Efficient sorting           |
+| O(n²)      | Quadratic    | Nested loops                |
+| O(2ⁿ)      | Exponential  | Recursive fibonacci (naive) |
+| O(n!)      | Factorial    | Generate all permutations   |
 
 ## Anti-Patterns
 
@@ -270,23 +302,27 @@ Before finalizing solution:
 ## Quick Problem Types
 
 ### String Manipulation
+
 - Use built-in methods when possible
 - Consider character array for mutations
 - Hash map for character counting
 - Two pointers for palindromes
 
 ### Array Problems
+
 - Two pointers for sorted arrays
 - Hash map for O(1) lookup
 - Sliding window for subarrays
 - Binary search if sorted
 
 ### Tree Problems
+
 - Recursion is natural fit
 - Consider BFS vs DFS
 - Use helper functions
 
 ### Graph Problems
+
 - Choose BFS or DFS appropriately
 - Track visited nodes
 - Consider using queue (BFS) or stack (DFS)
@@ -294,6 +330,7 @@ Before finalizing solution:
 ## References and Further Reading
 
 ### Essential Problem-Solving Resources
+
 - [LeetCode](https://leetcode.com) - Algorithmic practice with curated problems
 - [HackerRank](https://hackerrank.com) - Data structures and algorithm challenges
 - [Codeforces](https://codeforces.com) - Competitive programming contests
@@ -301,23 +338,27 @@ Before finalizing solution:
 - [Advent of Code](https://adventofcode.com) - Daily coding challenges (December)
 
 ### Algorithm Design References
+
 - [Introduction to Algorithms (CLRS)](https://mitpress.mit.edu/9780262033848/) - The comprehensive algorithm textbook
 - [Algorithm Design Manual](https://www.algorist.com) - Practical problem-solving approach
 - [GeeksforGeeks](https://geeksforgeeks.org) - Extensive algorithm explanations
 - [Competitive Programmer's Handbook](https://cses.fi/book.pdf) - Free comprehensive guide
 
 ### Problem-Solving Methodologies
+
 - [How to Solve It by George Pólya](https://press.princeton.edu/books/paperback/9780691164076/how-to-solve-it) - Classic problem-solving framework
 - [Think Like a Programmer](https://nostarch.com/thinklikeaprogrammer) - Problem-solving mindset
 - [The Pragmatic Programmer](https://pragprog.com/titles/tpp20) - Practical problem approaches
 - [Clean Code](https://www.amazon.com/Clean-Code-Handbook-Software-Craftsmanship) - Writing maintainable solutions
 
 ### Complexity Analysis References
+
 - [Big O Cheat Sheet](https://www.bigocheatsheet.com) - Quick complexity reference
 - [VisuAlgo](https://visualgo.net) - Visual algorithm animations
 - [Algorithm Visualizer](https://algorithm-visualizer.org) - Interactive algorithm exploration
 
 ### Specific Technique References
+
 - Dynamic Programming: [MIT 6.006](https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/) lectures
 - Graph Algorithms: [Algorithms Specialization](https://www.coursera.org/specializations/algorithms)
 - System Design: [System Design Primer](https://github.com/donnemartin/system-design-primer)
@@ -368,3 +409,12 @@ Plan and execute complex code changes systematically:
 - Clear code > clever code
 - Perfect is the enemy of good
 - Practice regularly to improve pattern recognition
+
+---
+
+## Related Skills
+
+- **diagnose** - For debugging-specific problem solving (bugs, performance issues)
+- **architecture** - For system-level design decisions and trade-offs
+- **research** - For understanding unfamiliar domains before problem solving
+- **refactor-path** - For code restructuring problems
