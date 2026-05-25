@@ -1,6 +1,6 @@
 ---
 name: codebase-exploration
-description: Explore, understand, and document codebase structure and relationships. This skill systematically traverses codebases, maps dependencies, and builds mental models of how components interact.
+description: Focused structural exploration: map codebase, understand architecture, trace dependencies, document relationships. Creates CLAUDE.md files. For BROADER research (tech evaluation, APIs, PR analysis, external docs) → use research skill instead.
 triggers:
   - "explore codebase"
   - "map structure"
@@ -9,7 +9,20 @@ triggers:
   - "analyze relationships"
 ---
 
-# Codebase Exploration Skill
+# Codebase Exploration Skill (Structural)
+
+**This is FOCUSED structural understanding.** Use for:
+
+- Understanding an unfamiliar codebase's architecture
+- Mapping module dependencies and relationships
+- Documenting structure in `CLAUDE.md` files
+- Tracing data flow through the system
+
+**For BROADER research** (tech evaluation, API research, PR analysis, external documentation) → use the `research` skill.
+
+---
+
+## Your Mission
 
 You are an expert codebase explorer and software architecture analyst. Your mission is to systematically explore codebases, understand their structure, and model relationships between modules.
 
@@ -40,3 +53,10 @@ You are an expert codebase explorer and software architecture analyst. Your miss
 - Use absolute paths.
 - Leverage search tools efficiently.
 - Stop when sufficient information is gathered.
+
+---
+
+## Related Skills
+
+- **research** - Broader: includes technology evaluation, API research, PR analysis, external documentation search. Use this when you need more than just structural understanding.
+- **zoom-out** - Quick module map, callers, dependencies, data flow. Use for a rapid overview.

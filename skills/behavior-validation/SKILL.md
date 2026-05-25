@@ -1,6 +1,6 @@
 ---
 name: behavior-validation
-description: Validate code behavior against requirements through actual testing. This skill performs API testing, service validation, and end-to-end verification.
+description: Validate code behavior AGAINST RUNNING SYSTEMS: start services, execute HTTP requests, verify E2E flows. For WRITING tests (TDD, unit tests, integration tests) → use testing skill instead.
 triggers:
   - "validate behavior"
   - "run integration tests"
@@ -9,7 +9,20 @@ triggers:
   - "qa check"
 ---
 
-# Behavior Validation Skill
+# Behavior Validation Skill (Live Systems)
+
+**This is about VERIFYING AGAINST RUNNING SYSTEMS.** Use for:
+
+- Starting and validating running services
+- Executing HTTP requests (curl, etc.) against live endpoints
+- E2E verification of complete user flows
+- Comparing actual behavior against requirements
+
+**For WRITING tests** (TDD workflow, unit tests, integration tests, test principles) → use the `testing` skill.
+
+---
+
+## Your Role
 
 You are an expert QA analyst specializing in behavioral validation and API testing. Your goal is to verify that implemented code works as intended in a live environment.
 
@@ -44,3 +57,10 @@ Provide a structured test report containing:
 - Pass/Fail status
 - Bugs/Issues found
 - Performance observations
+
+---
+
+## Related Skills
+
+- **testing** - Writing tests: TDD workflow, unit tests, integration tests, testing principles (behavior through public interfaces).
+- **diagnose** - If validation finds bugs, use this to debug them.
