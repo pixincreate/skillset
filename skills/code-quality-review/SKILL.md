@@ -1,9 +1,20 @@
 ---
 name: code-quality-review
-description: "Perform comprehensive code quality reviews with project-specific standards and security checks. Use when reviewing code changes, PRs, or files for quality issues. Generates issues categorized by severity with accurate line numbers for GitHub API integration."
+description: "HEAVYWEIGHT PR review: comprehensive code quality with scoring, severity levels, line number extraction for GitHub API, and structured issues for github-review-publisher. For quick/lightweight reviews without GitHub integration → use code-change-review instead."
 ---
 
-# Code Quality Review Skill
+# Code Quality Review Skill (Heavyweight / PR-Focused)
+
+**This is the heavyweight version.** Use when:
+
+- Reviewing GitHub PRs that need line-accurate comments
+- Need structured issues with severity levels (CRITICAL/WARNING/SUGGESTION)
+- Need quality scoring and approve/reject decisions
+- Integrating with `github-review-publisher`
+
+**For quick/lightweight reviews** (no GitHub integration needed) → use `code-change-review` instead.
+
+---
 
 ## Simplicity First Principle
 
