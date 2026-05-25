@@ -1,49 +1,192 @@
 ---
 name: testing
-description: Write effective tests following testing best practices. Use when writing unit tests, integration tests, E2E tests, implementing TDD, improving test coverage, or ensuring code quality.
+description: "WRITE tests following best practices: test BEHAVIOR through public interfaces (not implementation), vertical slices (one test → one impl → repeat), TDD red-green-refactor. For VALIDATING against RUNNING systems (curl, services up, E2E) → use behavior-validation skill instead."
+triggers:
+  - "write tests"
+  - "add tests"
+  - "TDD"
+  - "test driven"
+  - "red green"
+  - "unit tests"
+  - "integration tests"
+  - "test coverage"
 ---
 
-# Testing
+# Testing: Behavior-First, Vertical Slices
 
-Write effective tests following testing best practices.
+**This is about WRITING tests.** For VERIFYING code against RUNNING systems (HTTP requests, services up, E2E flows) → use `behavior-validation` instead.
 
-## Overview
+---
 
-This skill covers:
-- Testing pyramid and strategy
-- Unit testing patterns
-- Integration testing
-- E2E testing
-- Test-driven development
+## Core principle\*\*: Tests should verify behavior through public interfaces, not implementation details. Code can change entirely; tests shouldn't.
 
-## When to Use
+## Critical: Vertical vs Horizontal Slices
 
-This skill auto-activates when users request:
-- "Write tests"
-- "Add test coverage"
-- "Write unit tests"
-- "Write integration tests"
-- "Write E2E tests"
-- "TDD"
-- "Test driven"
-- Any testing-related task
+### ❌ ANTI-PATTERN: Horizontal Slices (WRONG)
+
+**DO NOT write all tests first, then all implementation.**
+
+This is "horizontal slicing" - treating RED as "write all tests" and GREEN as "write all code."
+
+This produces **crap tests**:
+
+- Tests written in bulk test _imagined_ behavior, not _actual_ behavior
+- You end up testing the _shape_ of things (data structures, function signatures) rather than user-facing behavior
+- Tests become insensitive to real changes - they pass when behavior breaks, fail when behavior is fine
+- You outrun your headlights, committing to test structure before understanding the implementation
+
+### ✅ CORRECT: Vertical Slices (Tracer Bullets)
+
+**One test → one implementation → repeat.**
+
+```
+WRONG (horizontal):
+  RED:   test1, test2, test3, test4, test5
+  GREEN: impl1, impl2, impl3, impl4, impl5
+
+RIGHT (vertical):
+  RED→GREEN: test1→impl1
+  RED→GREEN: test2→impl2
+  RED→GREEN: test3→impl3
+  ...
+```
+
+Each test responds to what you learned from the previous cycle. Because you just wrote the code, you know exactly what behavior matters and how to verify it.
+
+## Good Tests vs Bad Tests
+
+### Good Tests
+
+**Integration-style**: Test through real interfaces, not mocks of internal parts.
+
+```typescript
+// GOOD: Tests observable behavior
+test("user can checkout with valid cart", async () => {
+  const cart = createCart();
+  cart.add(product);
+  const result = await checkout(cart, paymentMethod);
+  expect(result.status).toBe("confirmed");
+});
+```
+
+Characteristics:
+
+- Tests behavior users/callers care about
+- Uses public API only
+- **Survives internal refactors**
+- Describes WHAT, not HOW
+- One logical assertion per test
+
+### Bad Tests
+
+**Implementation-detail tests**: Coupled to internal structure.
+
+```typescript
+// BAD: Tests implementation details
+test("checkout calls paymentService.process", async () => {
+  const mockPayment = jest.mock(paymentService);
+  await checkout(cart, payment);
+  expect(mockPayment.process).toHaveBeenCalledWith(cart.total);
+});
+```
+
+Red flags:
+
+- Mocking internal collaborators
+- Testing private methods
+- Asserting on call counts/order
+- **Test breaks when refactoring without behavior change**
+- Test name describes HOW not WHAT
+- Verifying through external means instead of interface
+
+```typescript
+// BAD: Bypasses interface to verify
+test("createUser saves to database", async () => {
+  await createUser({ name: "Alice" });
+  const row = await db.query("SELECT * FROM users WHERE name = ?", ["Alice"]);
+  expect(row).toBeDefined();
+});
+
+// GOOD: Verifies through interface
+test("createUser makes user retrievable", async () => {
+  const user = await createUser({ name: "Alice" });
+  const retrieved = await getUser(user.id);
+  expect(retrieved.name).toBe("Alice");
+});
+```
+
+## TDD Workflow with Vertical Slices
+
+### 1. Planning (BEFORE any code)
+
+When exploring the codebase, use the project's domain glossary (`CONTEXT.md` if exists) so that test names and interface vocabulary match the project's language. Respect any ADRs in `docs/adr/`.
+
+Before writing any code:
+
+- [ ] Confirm with user what interface changes are needed
+- [ ] Confirm with user which behaviors to test (prioritize)
+- [ ] Identify opportunities for **deep modules** (small interface, deep implementation)
+- [ ] List the behaviors to test (not implementation steps)
+- [ ] **Get user approval on the plan**
+
+Ask: "What should the public interface look like? Which behaviors are most important to test?"
+
+**You can't test everything.** Confirm with the user exactly which behaviors matter most. Focus testing effort on critical paths and complex logic, not every possible edge case.
+
+### 2. Tracer Bullet
+
+Write **ONE test** that confirms **ONE thing** about the system:
+
+```
+RED:   Write test for first behavior → test fails
+GREEN: Write minimal code to pass → test passes
+```
+
+This is your tracer bullet - proves the path works end-to-end.
+
+### 3. Incremental Loop
+
+For each remaining behavior:
+
+```
+RED:   Write next test → fails
+GREEN: Minimal code to pass → passes
+```
+
+Rules:
+
+- One test at a time
+- Only enough code to pass current test
+- Don't anticipate future tests
+- Keep tests focused on observable behavior
+
+### 4. Refactor
+
+After all tests pass, look for refactor candidates:
+
+- [ ] Extract duplication
+- [ ] Deepen modules (move complexity behind simple interfaces)
+- [ ] Run tests after each refactor step
+
+**Never refactor while RED.** Get to GREEN first.
+
+## Checklist Per Cycle
+
+```
+[ ] Test describes behavior, not implementation
+[ ] Test uses public interface only
+[ ] Test would survive internal refactor
+[ ] Code is minimal for this test
+[ ] No speculative features added
+```
 
 ## Available References
 
 ### Test-Driven Development
+
 - **test-driven-development.md** - Rigorous TDD process following Red-Green-Refactor cycle
 
-## Usage
-
-For detailed TDD information:
-
-```bash
-cat testing/reference/test-driven-development.md
-```
-
-## Quick Reference
-
-### Testing Pyramid
+## Testing Pyramid
 
 ```
        /\
@@ -56,35 +199,32 @@ cat testing/reference/test-driven-development.md
 ```
 
 - **Unit tests**: Fast, isolated, test single functions/components
-- **Integration tests**: Test multiple units working together
+- **Integration tests**: Test multiple units working together through public interfaces
 - **E2E tests**: Test complete user flows
 
-### Key Principles
+## Key Principles (Quick Reference)
 
-1. **Test behavior, not implementation** - Test what, not how
-2. **Arrange-Act-Assert** - Clear test structure
-3. **One assertion per test** - When practical
-4. **Descriptive names** - `user_can_login` not `test1`
-5. **Fast tests** - Units should run in milliseconds
+1. **Test behavior, not implementation** - Test WHAT, not HOW
+2. **Vertical slices only** - One test → one implementation → repeat
+3. **Arrange-Act-Assert** or **Given-When-Then** - Clear test structure
+4. **Descriptive names** - `userCanLogin` not `test1`
+5. **Tests must survive refactors** - If internal change breaks test without behavior change, test is BAD
 
-### Common Patterns
+## When TDD Is Difficult
 
-**Given-When-Then**:
-```javascript
-given('user is logged out', () => { ... })
-when('user clicks login', () => { ... })
-then('user sees dashboard', () => { ... })
-```
+TDD may not work well for:
 
-**Mocking**:
-- Mock external dependencies (APIs, databases)
-- Stub slow operations
-- Use test doubles appropriately
+- Exploratory work / spikes
+- UI layouts (hard to specify behavior upfront)
+- Performance optimization
+- Legacy code (add tests after understanding behavior)
 
-### Anti-patterns
+In these cases: write tests after implementation but before moving on. Still follow: test behavior, not implementation.
 
-- Testing internal implementation details
-- Brittle tests that break on refactors
-- Slow tests that block CI
-- No tests for edge cases
-- Testing multiple things in one test
+---
+
+## Related Skills
+
+- **behavior-validation** - Validating against running systems: HTTP requests, service verification, E2E flows. Use this after tests pass to confirm live behavior.
+- **planning** - Get user approval on test cases BEFORE writing any code or tests.
+- **diagnose** - If tests reveal bugs, use this to debug them.
