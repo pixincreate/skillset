@@ -1,15 +1,23 @@
 ---
 name: spec-writer
-description: Write clear, actionable technical specifications that bridge intent and implementation. Use when user wants to create specs, PRDs, technical docs, or needs help writing a specification.
+description: Template library for writing specs, PRDs, RFCs, and technical documentation. Provides structures and checklists. For the PLANNING WORKFLOW with gatekeeping, user approval, and grill-me questioning → use planning skill instead.
 ---
 
-# Spec Writer
+# Spec Writer: Template Library
 
-Write technical specifications that are clear, actionable, and implementation-ready.
+**This is a template/reference library.** For the full planning workflow (gatekeeping before code, user approval, one-question-at-a-time clarification) → use the `planning` skill.
+
+Use this skill when you need:
+
+- Structures for PRDs, specs, RFCs
+- Checklists for what makes a good spec
+- Examples by document type
+
+---
 
 ## Overview
 
-This skill helps create:
+This skill provides templates for creating:
 
 - Technical specifications (SPEC.md)
 - Product Requirements Documents (PRDs)
@@ -25,6 +33,10 @@ Use this skill when:
 - Writing technical documentation
 - Creating RFCs for proposals
 - Documenting existing systems
+
+**The `planning` skill uses these templates as part of its workflow.**
+
+---
 
 ## Specification Structure
 
@@ -58,6 +70,8 @@ Use this skill when:
 - What are we NOT doing?
 - What's deferred to later?
 
+---
+
 ## Writing Principles
 
 ### Clarity Over Brevity
@@ -80,6 +94,8 @@ Show, don't just tell. Include:
 ### Decisions Need Rationale
 
 Every significant decision should answer: "Why this approach and not X, Y, Z?"
+
+---
 
 ## Common Sections by Type
 
@@ -134,6 +150,8 @@ Every significant decision should answer: "Why this approach and not X, Y, Z?"
 ## Examples
 ```
 
+---
+
 ## Workflow
 
 ### 1. Gather Information
@@ -162,6 +180,8 @@ Check for:
 - Unclear requirements
 - Implementation gaps
 
+---
+
 ## Quality Checklist
 
 - [ ] Every requirement is testable
@@ -170,3 +190,10 @@ Check for:
 - [ ] Out of scope is explicit
 - [ ] Open questions are documented
 - [ ] Technical terms are defined
+
+---
+
+## Related Skills
+
+- **planning** - Full workflow: gatekeeping before code, user approval, one-question-at-a-time clarification. Uses these templates.
+- **rapidfire** - For interviewing/grilling when requirements are unclear

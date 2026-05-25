@@ -26,6 +26,7 @@ slackdump --version          # verify
 ```
 
 Manual (macOS Apple Silicon):
+
 ```bash
 curl -L -o slackdump https://github.com/rusq/slackdump/releases/latest/download/slackdump_darwin_arm64
 chmod +x slackdump && sudo mv slackdump /usr/local/bin/
@@ -46,16 +47,19 @@ slackdump workspace del <name>                      # remove credentials
 ```
 
 **With an existing token:**
+
 ```bash
 slackdump -token xoxb-your-token workspace new <name>
 ```
 
 **With cookie-based auth** (browser → DevTools → Application → Cookies → `d` value):
+
 ```bash
 slackdump -cookie <d-cookie-value> workspace new <name>
 ```
 
 **From a `.env` file** (`SLACK_TOKEN=xoxb-...`):
+
 ```bash
 slackdump workspace import .env
 ```
@@ -78,6 +82,7 @@ slackdump list users
 ## Archive (Full Workspace → SQLite)
 
 Creates `slackdump_YYYYMMDD_HHMMSS/` containing:
+
 - `slackdump.sqlite` — all messages
 - `__uploads/` — file attachments (with `-files`)
 - `__avatars/` — user avatars (with `-avatars`)
@@ -107,6 +112,7 @@ slackdump dump @conversations.txt                            # batch (one ID/URL
 ```
 
 **Dump a specific thread:**
+
 ```bash
 # By URL:
 slackdump dump https://<workspace>.slack.com/archives/<CHANNEL_ID>/p<TIMESTAMP>
@@ -139,6 +145,7 @@ WHERE TEXT LIKE '%keyword%';
 ```
 
 **Browse via web UI:**
+
 ```bash
 slackdump view ./slackdump_YYYYMMDD_HHMMSS
 ```
@@ -214,53 +221,58 @@ Default: `http://127.0.0.1:8483/mcp`
 
 ### Available MCP Tools
 
-| Tool | Description |
-|------|-------------|
-| `load_source` | Open/switch archive at runtime |
-| `list_channels` | List all channels |
-| `get_channel` | Get channel details by ID |
-| `list_users` | List all users |
-| `get_messages` | Read messages (paginated) |
-| `get_thread` | Read thread replies |
-| `get_workspace_info` | Workspace metadata |
+| Tool                 | Description                    |
+| -------------------- | ------------------------------ |
+| `load_source`        | Open/switch archive at runtime |
+| `list_channels`      | List all channels              |
+| `get_channel`        | Get channel details by ID      |
+| `list_users`         | List all users                 |
+| `get_messages`       | Read messages (paginated)      |
+| `get_thread`         | Read thread replies            |
+| `get_workspace_info` | Workspace metadata             |
 
 ---
 
 ## File Locations
 
-| Item | Location |
-|------|----------|
-| Credentials | `~/Library/Caches/slackdump/` |
-| Archive output | `./slackdump_YYYYMMDD_HHMMSS/` |
-| Archive DB | `./slackdump_YYYYMMDD_HHMMSS/slackdump.sqlite` |
+| Item           | Location                                       |
+| -------------- | ---------------------------------------------- |
+| Credentials    | `~/Library/Caches/slackdump/`                  |
+| Archive output | `./slackdump_YYYYMMDD_HHMMSS/`                 |
+| Archive DB     | `./slackdump_YYYYMMDD_HHMMSS/slackdump.sqlite` |
 
 ---
 
 ## Troubleshooting
 
 **No workspace selected:**
+
 ```bash
 slackdump workspace list
 slackdump workspace select <name>
 ```
 
 **Token expired:**
+
 ```bash
 slackdump workspace new <name>
 ```
 
 **Rate limiting:**
+
 ```bash
 slackdump config new
 slackdump archive --api-config custom-config.json
 ```
 
 **Resume interrupted archive:**
+
 ```bash
 slackdump resume ./slackdump_YYYYMMDD_HHMMSS
 ```
 
 **Corrupted credentials:**
+
 ```bash
 slackdump workspace del <name>
 slackdump workspace new <name>

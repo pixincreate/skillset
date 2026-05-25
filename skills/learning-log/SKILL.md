@@ -115,16 +115,20 @@ Suggested location: `.learning/` in project root
 # Learning Log
 
 ## Patterns
+
 - [auth-flow](patterns/auth-flow.md)
 - [error-handling](patterns/error-handling.md)
 
 ## Anti-Patterns
+
 - [n+1-queries](anti-patterns/n+1-queries.md)
 
 ## Gotchas
+
 - [dates-timezone](gotchas/dates-timezone.md)
 
 ## Discoveries
+
 - [api-rate-limits](discoveries/api-rate-limits.md)
 ```
 

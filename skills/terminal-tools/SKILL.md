@@ -32,12 +32,12 @@ Configure and use terminal tools for an optimized development workflow.
 
 ## Tools
 
-| Tool     | Purpose               | Config file                      |
-| -------- | --------------------- | -------------------------------- |
-| tmux     | Terminal multiplexer  | `~/.tmux.conf`                   |
-| starship | Shell prompt          | `~/.config/starship.toml`        |
-| Ghostty  | Terminal emulator     | `~/.config/ghostty/config`       |
-| Zed      | Code editor           | `~/.config/zed/settings.json`    |
+| Tool     | Purpose              | Config file                   |
+| -------- | -------------------- | ----------------------------- |
+| tmux     | Terminal multiplexer | `~/.tmux.conf`                |
+| starship | Shell prompt         | `~/.config/starship.toml`     |
+| Ghostty  | Terminal emulator    | `~/.config/ghostty/config`    |
+| Zed      | Code editor          | `~/.config/zed/settings.json` |
 
 ---
 
@@ -65,23 +65,23 @@ tmux kill-session -t <name> # kill session
 
 ### Default key bindings (prefix: C-b)
 
-| Key          | Action                        |
-| ------------ | ----------------------------- |
-| `C-b c`      | New window                    |
-| `C-b n` / `p`| Next / previous window        |
-| `C-b 0-9`    | Switch to window N            |
-| `C-b ,`      | Rename window                 |
-| `C-b %`      | Split pane horizontally       |
-| `C-b "`      | Split pane vertically         |
-| `C-b arrow`  | Move between panes            |
-| `C-b z`      | Zoom/unzoom pane              |
-| `C-b d`      | Detach from session           |
-| `C-b [`      | Enter copy mode               |
-| `C-b ]`      | Paste from buffer             |
-| `C-b s`      | Browse sessions (tree mode)   |
-| `C-b w`      | Browse windows (tree mode)    |
-| `C-b :`      | Open command prompt           |
-| `C-b ?`      | List all key bindings         |
+| Key           | Action                      |
+| ------------- | --------------------------- |
+| `C-b c`       | New window                  |
+| `C-b n` / `p` | Next / previous window      |
+| `C-b 0-9`     | Switch to window N          |
+| `C-b ,`       | Rename window               |
+| `C-b %`       | Split pane horizontally     |
+| `C-b "`       | Split pane vertically       |
+| `C-b arrow`   | Move between panes          |
+| `C-b z`       | Zoom/unzoom pane            |
+| `C-b d`       | Detach from session         |
+| `C-b [`       | Enter copy mode             |
+| `C-b ]`       | Paste from buffer           |
+| `C-b s`       | Browse sessions (tree mode) |
+| `C-b w`       | Browse windows (tree mode)  |
+| `C-b :`       | Open command prompt         |
+| `C-b ?`       | List all key bindings       |
 
 ### Common `.tmux.conf` settings
 
@@ -132,6 +132,7 @@ set -s copy-command 'xsel -i'      # Linux
 ```
 
 For vi keys in copy mode:
+
 ```bash
 bind -Tcopy-mode-vi Enter send -X copy-pipe-and-cancel 'pbcopy'
 bind -Tcopy-mode-vi MouseDragEnd1Pane send -X copy-pipe-and-cancel 'pbcopy'
@@ -305,6 +306,7 @@ Open keybind reference: `Cmd+,` opens config; see https://ghostty.org/docs/confi
 ### Themes
 
 Ghostty ships hundreds of built-in themes. Browse them:
+
 - In app: command palette or config `theme = <name>`
 - Full list: https://ghostty.org/docs/features/theme
 
@@ -326,18 +328,18 @@ zed ~/projects/my-app    # open project
 
 ### Essential shortcuts (macOS)
 
-| Action              | macOS           | Linux/Windows    |
-| ------------------- | --------------- | ---------------- |
-| Command palette     | `Cmd+Shift+P`   | `Ctrl+Shift+P`   |
-| Go to file          | `Cmd+P`         | `Ctrl+P`         |
-| Go to symbol        | `Cmd+Shift+O`   | `Ctrl+Shift+O`   |
-| Find in project     | `Cmd+Shift+F`   | `Ctrl+Shift+F`   |
-| Toggle terminal     | `` Ctrl+` ``    | `` Ctrl+` ``     |
-| Open settings       | `Cmd+,`         | `Ctrl+,`         |
-| Extensions          | `Cmd+Shift+X`   | `Ctrl+Shift+X`   |
-| Theme selector      | `Cmd+K Cmd+T`   | `Ctrl+K Ctrl+T`  |
-| AI agent panel      | `Cmd+Shift+A`   | `Ctrl+Shift+A`   |
-| Inline AI           | `Cmd+Enter`     | `Ctrl+Enter`     |
+| Action          | macOS         | Linux/Windows   |
+| --------------- | ------------- | --------------- |
+| Command palette | `Cmd+Shift+P` | `Ctrl+Shift+P`  |
+| Go to file      | `Cmd+P`       | `Ctrl+P`        |
+| Go to symbol    | `Cmd+Shift+O` | `Ctrl+Shift+O`  |
+| Find in project | `Cmd+Shift+F` | `Ctrl+Shift+F`  |
+| Toggle terminal | `` Ctrl+` ``  | `` Ctrl+` ``    |
+| Open settings   | `Cmd+,`       | `Ctrl+,`        |
+| Extensions      | `Cmd+Shift+X` | `Ctrl+Shift+X`  |
+| Theme selector  | `Cmd+K Cmd+T` | `Ctrl+K Ctrl+T` |
+| AI agent panel  | `Cmd+Shift+A` | `Ctrl+Shift+A`  |
+| Inline AI       | `Cmd+Enter`   | `Ctrl+Enter`    |
 
 ### Settings file
 
@@ -366,6 +368,7 @@ zed ~/projects/my-app    # open project
 ### Language setup
 
 Zed includes built-in support for most languages. For others:
+
 1. `Cmd+Shift+X` to open Extensions
 2. Search your language
 3. Install
