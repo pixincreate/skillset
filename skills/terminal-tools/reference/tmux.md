@@ -4,6 +4,8 @@
 
 Terminal multiplexing for persistent, organized workflows: Use tmux to maintain long-running sessions, organize work into windows and panes, and seamlessly switch between contexts without losing state.
 
+> **Docs**: [tmux.github.io](https://github.com/tmux/tmux/wiki) / `man tmux` — always check the man page for the latest CLI options.
+
 ## When to Use This Skill
 
 This skill auto-activates when users request:

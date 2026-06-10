@@ -4,6 +4,8 @@
 
 Create efficient terminal environments: Configure Ghostty for optimal performance and workflow integration.
 
+> **Docs**: [ghostty.org/docs](https://ghostty.org/docs) — always check there for the latest config options.
+
 ## When to Use This Skill
 
 This skill auto-activates when users request:

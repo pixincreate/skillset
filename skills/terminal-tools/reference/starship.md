@@ -4,6 +4,8 @@
 
 Configure informative, fast shell prompts: Set up a prompt that shows useful context without slowing down your terminal.
 
+> **Docs**: [starship.rs/config](https://starship.rs/config/) / [starship.rs/presets](https://starship.rs/presets/) — always check there for the latest options and presets.
+
 ## When to Use This Skill
 
 This skill auto-activates when users request:

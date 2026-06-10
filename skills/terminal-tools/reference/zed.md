@@ -1,6 +1,6 @@
 # Zed Reference
 
-> **IMPORTANT**: Zed updates frequently. Always verify at https://zed.dev/docs/ when uncertain.
+> **Docs**: https://zed.dev/docs/ — Zed updates frequently. Always verify there for the latest features and settings.
 
 ## Core Principle
 
