@@ -255,3 +255,5 @@ If you started Quick Path and hit uncertainty, **STOP. Go back to Phase 1 of Ful
 
 - **planning** - For bugs that are really "this needs to be rearchitected"
 - **behavior-validation** - For verifying fixes against live systems
+- **doubt-driven-development** - Systematic CLAIM→DOUBT→RECONCILE cycle for when debugging reveals uncertainty about assumptions or correctness
+- **incremental-implementation** - Vertical-slice approach that prevents bugs by keeping changes small and verifiable

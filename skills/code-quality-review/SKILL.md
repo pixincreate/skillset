@@ -412,3 +412,6 @@ grep -r "serde::Serialize\|serde::Deserialize" --include="*.rs" backend/
 - **pr-analysis** — Provides file paths and commit SHA for integration
 - **github-review-publisher** — Consumes structured issues for GitHub
 - **collaboration** — Enhanced review process
+- **code-simplification** — Deeper simplification principles (Chesterton's Fence, Rule of 500) to reference in SIMPLICITY-severity issues
+- **security-and-hardening** — STRIDE threat model and OWASP Top 10 for security issue detection during review
+- **api-and-interface-design** — Contract-first design patterns for reviewing API surface quality

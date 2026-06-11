@@ -522,6 +522,12 @@ const config = {
 - [ ] Documentation is adequate
 - [ ] Follows project conventions
 
+## Related Skills
+
+- **code-simplification** — Deeper principles for simplifying existing code: Chesterton's Fence, Rule of 500, language-specific before/after examples. Use when code is already written and needs untangling.
+- **incremental-implementation** — Disciplined vertical-slice implementation workflow. Complements simplicity-first by ensuring changes stay small and focused.
+- **doubt-driven-development** — Systematic doubt-and-reconcile cycle. Use when simplicity-first detects confusion but root cause is unclear.
+
 ## Remember
 
 - Code is read more than written

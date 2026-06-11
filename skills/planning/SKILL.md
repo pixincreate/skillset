@@ -300,6 +300,9 @@ Almost never. But for truly trivial tasks:
 - **brainstorming** - For creative/design work before planning
 - **testing** - For actual test implementation after test cases are approved
 - **safe-pr** - For PR safety when working with shared code
+- **incremental-implementation** - Turn plan slices into executable vertical slices with scope discipline. Natural next step after planning.
+- **doubt-driven-development** - Systematic uncertainty resolution during planning when user requirements have hidden contradictions
+- **api-and-interface-design** - Contract-first API design that integrates with vertical-slice planning
 
 ---
 

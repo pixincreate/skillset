@@ -228,3 +228,5 @@ In these cases: write tests after implementation but before moving on. Still fol
 - **behavior-validation** - Validating against running systems: HTTP requests, service verification, E2E flows. Use this after tests pass to confirm live behavior.
 - **planning** - Get user approval on test cases BEFORE writing any code or tests.
 - **diagnose** - If tests reveal bugs, use this to debug them.
+- **incremental-implementation** - Vertical-slice execution workflow that pairs naturally with test-first development
+- **doubt-driven-development** - Use when tests reveal uncertainty about whether behavior is correct vs the test being wrong
