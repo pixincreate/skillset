@@ -1,6 +1,6 @@
 ---
 name: codebase-exploration
-description: Focused structural exploration: map codebase, understand architecture, trace dependencies, document relationships. Creates CLAUDE.md files. For BROADER research (tech evaluation, APIs, PR analysis, external docs) → use research skill instead.
+description: "Focused structural exploration: map codebase, understand architecture, trace dependencies, document relationships. Creates CLAUDE.md files. For BROADER research (tech evaluation, APIs, PR analysis, external docs) → use research skill instead."
 triggers:
   - "explore codebase"
   - "map structure"

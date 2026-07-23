@@ -1,6 +1,6 @@
 ---
 name: behavior-validation
-description: Validate code behavior AGAINST RUNNING SYSTEMS: start services, execute HTTP requests, verify E2E flows. For WRITING tests (TDD, unit tests, integration tests) → use testing skill instead.
+description: "Validate code behavior AGAINST RUNNING SYSTEMS: start services, execute HTTP requests, verify E2E flows. For WRITING tests (TDD, unit tests, integration tests) → use testing skill instead."
 triggers:
   - "validate behavior"
   - "run integration tests"

@@ -1,6 +1,6 @@
 ---
 name: terminal-tools
-description: Configure and use terminal tools effectively for an optimized terminal workflow. Use when working with terminal multiplexers, shell prompts, terminal emulators, or code editors. Auto-activates for: "tmux", "starship", "ghostty", "zed", "terminal multiplexer", "shell prompt", "configure terminal".
+description: "Configure and use terminal tools effectively for an optimized terminal workflow. Use when working with terminal multiplexers, shell prompts, terminal emulators, or code editors. Auto-activates for: \"tmux\", \"starship\", \"ghostty\", \"zed\", \"terminal multiplexer\", \"shell prompt\", \"configure terminal\"."
 triggers:
   - "tmux"
   - "starship"

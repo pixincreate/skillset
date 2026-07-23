@@ -1,6 +1,6 @@
 ---
 name: diagnose
-description: Debugging discipline for all bugs. Two paths: (1) Quick Path for obvious bugs (typo, syntax, clear stack trace); (2) Full 6-Phase Discipline for hard bugs (performance, non-deterministic, multiple hypotheses). Start with Quick Path if confident; switch to Full Discipline at the first sign of uncertainty.
+description: "Debugging discipline for all bugs. Two paths: (1) Quick Path for obvious bugs (typo, syntax, clear stack trace); (2) Full 6-Phase Discipline for hard bugs (performance, non-deterministic, multiple hypotheses). Start with Quick Path if confident; switch to Full Discipline at the first sign of uncertainty."
 triggers:
   - "diagnose"
   - "debug this"

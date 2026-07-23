@@ -1,6 +1,6 @@
 ---
 name: rapidfire
-description: Brutally honest advisor with two modes: (1) Feedback Mode - blunt, no-fluff feedback on ideas/plans; (2) Interview Mode - relentless one-question-at-a-time alignment interview. Keeps grill-me triggers for discoverability.
+description: "Brutally honest advisor with two modes: (1) Feedback Mode - blunt, no-fluff feedback on ideas/plans; (2) Interview Mode - relentless one-question-at-a-time alignment interview. Keeps grill-me triggers for discoverability."
 triggers:
   - "grill me"
   - "grill-me"

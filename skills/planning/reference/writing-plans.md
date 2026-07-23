@@ -1,6 +1,6 @@
 ---
 name: writing-plans
-description: Write comprehensive implementation plans assuming the engineer has zero context. Document everything needed: which files to touch, code, testing, how to test it.
+description: "Write comprehensive implementation plans assuming the engineer has zero context. Document everything needed: which files to touch, code, testing, how to test it."
 ---
 
 # Writing Plans
