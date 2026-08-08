@@ -1,427 +1,259 @@
 # Ghostty Reference
 
-## Core Principle
-
-Create efficient terminal environments: Configure Ghostty for optimal performance and workflow integration.
-
-> **Docs**: [ghostty.org/docs](https://ghostty.org/docs) — always check there for the latest config options.
+> **Docs**: [ghostty.org/docs](https://ghostty.org/docs) — config reference at [ghostty.org/docs/config/reference](https://ghostty.org/docs/config/reference). Always check there for the latest options; this file is a curated subset.
 
 ## When to Use This Skill
 
-This skill auto-activates when users request:
 - "Configure Ghostty terminal"
 - "Change Ghostty theme"
-- "Set terminal font"
+- "Set terminal font / padding / opacity"
 - "Configure keybindings in Ghostty"
-- "Create Ghostty profile"
-- "Ghostty command palette"
+- "Ghostty quick terminal / keybinds"
 
 ## Getting Started
 
 ### Installation
 
 **macOS**:
+
 ```bash
-# Using Homebrew
 brew install --cask ghostty
-
-# Or download from ghostty.org
 ```
 
-**Linux**:
+**Linux** (Fedora — Terra repo omits themes by design, see Themes section):
+
 ```bash
-# Ubuntu/Debian
-sudo apt install ghostty
-
-# Fedora
+# COPR (ships the full theme DB)
+sudo dnf copr enable scottames/ghostty
+sudo dnf install --disablerepo='terra*' ghostty
+# Terra (no bundled themes)
 sudo dnf install ghostty
-
-# Arch
-paru -S ghostty-bin
 ```
+
+**Arch**: `paru -S ghostty-bin` · **Debian/Ubuntu**: see [ghostty.org/docs/install](https://ghostty.org/docs/install).
 
 ### First Launch
 
-1. Open Ghostty
-2. Access settings: `Cmd+,` (macOS) or `Ctrl+,` (Linux)
-3. Choose default profile
-4. Configure shell integration
+1. Open Ghostty (macOS: `Cmd+,` opens settings · Linux: config file only)
+2. Edit `~/.config/ghostty/config`
+3. Reload: `ghostty +reload-config` or the `reload_config` action
 
 ## Configuration
 
-### Config File Location
+### Config File
 
 ```bash
-# macOS
-~/.config/ghostty/config
-
-# Linux
-~/.config/ghostty/config
+~/.config/ghostty/config        # macOS + Linux
 ```
 
-### Basic Configuration
+Supports splitting configs with `config-file` (loaded **after** the main file, so it can override):
 
 ```conf
-# Ghostty config file
+config-file = ~/.config/ghostty/os/linux.conf
+config-file = ~/.config/ghostty/theme.conf
+```
 
+### Basic Configuration (REAL KEYS)
+
+```conf
 # Appearance
-theme = dark
+theme = kanagawa-dragon          # any name from `ghostty +list-themes`
 font-family = JetBrains Mono
 font-size = 14
+background-opacity = 0.88        # NOT `opacity`
+padding = 4                      # or padding = 8,4 (top/bottom, left/right)
 
 # Terminal behavior
-shell-integration = enabled
+shell-integration = auto         # auto|zsh|bash|fish|none
 confirm-close-surface = false
+mouse-hide-while-typing = true
+scrollback-limit = 350000        # lines of scrollback
 
-# Key bindings
-keybind = ctrl+shift+c=copy_to_clipboard
-keybind = ctrl+shift+v=paste_from_clipboard
+# Cursor
+cursor-style = block             # block|underline|bar
+cursor-color = #dcd7ba
 ```
+
+**Invalid keys to AVOID** (do not exist): `opacity`, `blur`, `gpu-acceleration`, `fps`, `buffer-lines`, `shell-integration-full`, `fi-command`, `show-tab-bar`, `tab-bar-position`, `tab-width`, `tab-close-buttons`. Use the real equivalents above.
 
 ## Themes
 
 ### Built-in Themes
 
-```conf
-# Available themes
-theme = system            # Follow system theme
-theme = dark              # Dark mode
-theme = light             # Light mode
-theme = gruvbox           # Gruvbox theme
-theme = github-dark       # GitHub Dark
-theme = night-owl         # Night Owl
-```
-
-### Custom Theme
+Ghostty ships 400+ themes sourced from [iterm2-color-schemes](https://iterm2colorschemes.com) (updated weekly upstream):
 
 ```conf
-# Define custom colors
-background = 282c34
-foreground = abb2bf
-
-# ANSI colors
-color-0-foreground = 282c34
-color-0-background = abb2bf
-color-1-foreground = e06c75  # Red
-color-2-foreground = 98c379  # Green
-color-3-foreground = d19a66  # Yellow
-color-4-foreground = 61afef  # Blue
-color-5-foreground = c678dd  # Magenta
-color-6-foreground = 56b6c2  # Cyan
-color-7-foreground = abb2bf  # White
-
-# Bright colors
-color-8-foreground = 5c6370  # Bright black (gray)
-color-9-foreground = e06c75  # Bright red
-# ... continue for all bright colors
+theme = Catppuccin Frappe
+theme = dark:Catppuccin Frappe,light:Catppuccin Latte   # auto light/dark
+theme = kanagawa-dragon
 ```
 
-### Theme Switching
+List installed themes: `ghostty +list-themes`. Theme lookup dirs: `$XDG_CONFIG_HOME/ghostty/themes` and `$PREFIX/share/ghostty/themes`.
 
-**Command palette**:
-```
-Cmd/Ctrl+Shift+P → "Theme: Dark"
-Cmd/Ctrl+Shift+P → "Theme: Light"
+> **License note**: the theme _collection_ is MIT, but **each theme's copyright belongs to its original author**; some are non-redistributable (e.g. Monokai Pro) or unlicensed (mbadolato/iTerm2-Color-Schemes#638). Terra deliberately does not bundle themes for this reason; the COPR build (`-Demit-themes=true`) does. Upstream binaries ship them.
+
+### Custom Theme (REAL palette syntax)
+
+```conf
+palette = 0=#51576d
+palette = 1=#e78284
+palette = 2=#a6d189
+palette = 3=#e5c890
+palette = 4=#8caaee
+palette = 5=#f4b8e4
+palette = 6=#81c8be
+palette = 7=#a5adce
+palette = 8=#626880
+palette = 9=#e67172
+palette = 10=#8ec772
+palette = 11=#d9ba73
+palette = 12=#7b9ef0
+palette = 13=#f2a4db
+palette = 14=#5abfb5
+palette = 15=#b5bfe2
+background = #303446
+foreground = #c6d0f5
+cursor-color = #f2d5cf
+cursor-text = #c6d0f5
+selection-background = #626880
+selection-foreground = #c6d0f5
 ```
 
 ## Fonts and Typography
 
-### Font Configuration
-
 ```conf
-# Font settings
-font-family = JetBrains Mono Nerd Font
+font-family = "JetBrains Mono Nerd Font, SF Mono, Monaco"   # comma fallbacks
 font-size = 14
-font-weight = 400
+font-weight = 500                    # 1-999
 font-style = normal
-
-# Font features
-font-feature = '+calt'  # contextual alternates
-font-feature = '+liga'  # ligatures
-
-# Line spacing
+font-feature = +calt                 # contextual alternates (repeatable)
+font-feature = +liga                 # ligatures
 line-height = 1.2
 letter-spacing = 0
 ```
 
-### Font Fallbacks
-
-```conf
-# Multiple fonts with fallback
-font-family = "JetBrains Mono Nerd Font, SF Mono, Monaco"
-```
-
-## Profiles
-
-### Creating Profiles
-
-```conf
-# Development profile
-profile-dev-shell = {
-    shell-integration = fish
-    theme = gruvbox-dark
-    font-size = 16
-    opacity = 0.95
-}
-
-# Server profile
-profile-server = {
-    theme = monokai
-    font-family = Fira Code
-    font-size = 12
-}
-```
-
-### Profile Switching
-
-**Switch profiles dynamically**:
-```
-Cmd/Ctrl+Shift+P → "Profile: dev-shell"
-Cmd/Ctrl+Shift+P → "Profile: server"
-```
+Check fonts: `fc-list | grep -i jetbrains`.
 
 ## Keybindings
 
-### Essential Shortcuts
+Syntax: `keybind = <mods>+<key>=<action>`. Modifiers: `super` (Cmd on macOS / Meta on Linux), `ctrl`, `shift`, `alt`. Prefix `global:` for system-wide binds (e.g. quick terminal):
 
 ```conf
 # Copy/Paste
-keybind = cmd+c=copy
-keybind = cmd+v=paste
-keybind = cmd+shift+c=copy_to_clipboard
-keybind = cmd+shift+v=paste_from_clipboard
+keybind = ctrl+shift+c=copy_to_clipboard
+keybind = ctrl+shift+v=paste_from_clipboard
 
-# Window management
-keybind = cmd+n=new_window
-keybind = cmd+w=close_window
-keybind = cmd+t=new_tab
-keybind = cmd+w=close_tab
+# Window/Tab
+keybind = super+n=new_window
+keybind = super+t=new_tab
+keybind = super+w=close_window
+keybind = super+shift+d=close_tab
+
+# Splits (since 1.2)
+keybind = super+d=new_split_right
+keybind = super+shift+d=new_split_below
+keybind = super+[=goto_split_previous
+keybind = super+]=goto_split_next
 
 # Font size
-keybind = cmd+plus=increase_font_size
-keybind = cmd+minus=decrease_font_size
-keybind = cmd+0=reset_font_size
+keybind = super+plus=increase_font_size
+keybind = super+minus=decrease_font_size
+keybind = super+0=reset_font_size
+
+# Misc
+keybind = super+k=clear_screen
+keybind = super+shift+p=toggle_command_palette
+keybind = ctrl+shift+r=reload_config
+
+# Quick terminal (global, works headless — requires global keybind in D-Bus mode)
+keybind = global:super+grave_accent=toggle_quick_terminal
 ```
 
-### Custom Actions
+Useful actions: `new_window`, `new_tab`, `new_split_right`, `new_split_below`, `new_split_left`, `new_split_above`, `goto_split_*`, `close_window`, `close_tab`, `increase_font_size`, `decrease_font_size`, `reset_font_size`, `copy_to_clipboard`, `paste_from_clipboard`, `clear_screen`, `toggle_quick_terminal`, `reload_config`, `toggle_command_palette`.
+
+## Quick Terminal (quake mode)
 
 ```conf
-# Custom keybinds
-keybind = cmd+1=profile:dev-shell
-keybind = cmd+2=profile:server
-keybind = cmd+d=theme:dark
-keybind = cmd+l=theme:light
+quick-terminal-position = top          # top|bottom|left|right|center
+quick-terminal-size = 55%,700px
+quick-terminal-animation-duration = 0.18
+quick-terminal-keyboard-interactivity = on-demand
+# gtk only:
+gtk-quick-terminal-layer = overlay
 
-# Shell integration
-keybind = cmd+enter=send_command_enter
-keybind = cmd+k=clear_screen
+# Known bug (ghostty #11679, fixed in 1.3.2): autohide=true breaks manual toggle-off
+# on KDE — window doesn't fully hide and keeps focus. Workaround:
+quick-terminal-autohide = false
 ```
 
-## Shell Integration
+Note: in headless/D-Bus mode (`--initial-window=false`) the quick terminal only works if you have a **global** keybind registered (rhodes-b, ghostty #11534).
 
-### Fish Integration
+## Linux (GTK) Specifics
 
 ```conf
-# Fish-specific settings
-shell-integration = fish
-cwd-tracking = true
-prompt-marking = true
+# Window chrome
+gtk-titlebar = true
+gtk-tabs-location = top
+gtk-single-instance = true          # see D-Bus warning below
+
+# D-Bus activation gotcha: ghostty's default is `detect`, which resolves to
+# false when the D-Bus service launches headless (--initial-window=false + flags
+# => probable_cli) -> app never claims com.mitchellh.ghostty -> KRunner/app-menu
+# launch fails with "Did not receive a reply". Keep it explicitly `true`.
 ```
 
-### Bash Integration
+## Performance
 
 ```conf
-# Bash-specific settings
-shell-integration = bash
-title-update = true
+# Real keys only
+scrollback-limit = 350000
+background-opacity = 0.88
+max-fps = 60                          # 0 = uncapped
 ```
 
-## Window Management
+> Ghostty has **no** `gpu-acceleration`/`fps`/`buffer-lines` options. Rendering is always GPU-accelerated (OpenGL/Vulkan via Metal on macOS).
 
-### Split Panes
+## Background Blur (macOS only in practice)
 
-**Split commands**:
-```
-Cmd/Ctrl+Shift+P → "Split Pane Below"
-Cmd/Ctrl+Shift+P → "Split Pane Right"
-```
+Key: `background-blur` (renamed from `background-blur-radius` in 1.1 — old name is a compat alias).
 
-**Navigation**:
-```
-Cmd/Ctrl+Opt/Alt+Arrow keys - Navigate panes
-Cmd/Ctrl+W - Close pane
-```
+- **macOS**: fully supported (CoreGraphics). Requires `background-opacity < 1`.
+- **Linux Wayland (KDE Plasma)**: broken on Plasma 6.7+ (Fedora 44) — Plasma dropped `org_kde_kwin_blur_manager` for `ext-background-effect-v1`; ghostty 1.3.1 only supports the old protocol. Blur silently stops working. Fixed on tip/main (PR #10727, issue #10721). Tracked in ghostty discussions #13041/#13068.
+- **Linux X11**: works only on KWin via `_KDE_NET_WM_BLUR_BEHIND_REGION`.
+- **Mutter (GNOME)**: NOT supported.
 
-### Tabs Management
-
-```conf
-# Tab behavior
-show-tab-bar = always
-tab-bar-position = bottom
-tab-width = 200
-tab-close-buttons = true
-```
-
-## Performance Optimization
-
-### Fast Terminal
-
-```conf
-# Performance settings
-gpu-acceleration = on
-fps = 60
-buffer-lines = 10000
-scrollback-limit = 10000
-
-# Reduce repaints
-opacity = 1.0
-blur = false
-```
-
-### Memory Usage
-
-```conf
-# Memory optimization
-buffer-lines = 5000
-max-bell-ring-duration = 1000
-```
-
-## Advanced Features
-
-### Shell Integration Features
-
-**Command features**:
-```conf
-# Enable all shell integration
-shell-integration-full = true
-
-# Features
-command-notifications = true
-directory-change-notifications = true
-fi-command = "\u001b]1337;File=inline=1;:" $FILE "\u0007"
-```
-
-### Custom Commands
-
-```conf
-# Define custom commands
-custom-command-1 = {
-    name = "Open Editor"
-    command = "nvim ."
-    keybind = cmd+e
-}
-
-custom-command-2 = {
-    name = "Git Status"
-    command = "git status"
-    keybind = cmd+g
-}
-```
+Value forms: `background-blur = true|false`, an integer blur intensity (macOS), or `macos-glass-regular|macos-glass-clear` (macOS 26+ only).
 
 ## Command Palette
 
-### Accessing Commands
-
 ```
-Cmd/Ctrl+Shift+P  # Open command palette
+super+shift+p   # toggle_command_palette
 ```
 
-**Common commands**:
-- "New Window"
-- "Split Pane"
-- "Change Theme"
-- "Switch Profile"
-- "Clear Screen"
-- "Copy URL"
-- "Open Config"
-
-## Quick Reference
-
-### Configuration Commands
-```conf
-# Appearance
-theme = dark
-opacity = 0.9
-blur = false
-background = #1e1e1e
-foreground = #d4d4d4
-
-# Font
-font-family = Code Pro
-font-size = 14
-font-weight = 500
-line-height = 1.4
-
-# Behavior
-shell-integration = enabled
-confirm-close-surface = true
-mouse-hide-while-typing = true
-```
-
-### Keybind Patterns
-```conf
-# Copy/Paste
-cmd+c=copy
-cmd+v=paste
-shift+cmd+c=copy_to_clipboard
-shift+cmd+v=paste_from_clipboard
-
-# Navigation
-cmd+t=new_tab
-cmd+w=close_tab
-cmd+shift+T=reopen_tab
-cmd+n=new_window
-cmd+w=close_window
-
-# Font
-cmd+plus=increase_font_size
-cmd+minus=decrease_font_size
-cmd+0=reset_font_size
-```
+Contains: New Window, New Tab, New Split, Change Theme, Copy URL, Clear Screen, Open Config, Toggle Quick Terminal, Reload Configuration.
 
 ## Troubleshooting
 
-### Common Issues
-
-**Font not loading**:
-1. Check font installation with `fc-list | grep -i jetbrains`
-2. Use full font name with spaces quoted
-3. Restart Ghostty after font changes
-
-**Shell integration not working**:
-1. Verify shell is supported (fish, bash, zsh)
-2. Check shell initialization scripts
-3. Enable with `shell-integration-full`
-
-**Performance issues**:
-1. Disable blur and transparency
-2. Reduce font features
-3. Limit buffer size
-
-### Debug Mode
+**Config validation / debugging**:
 
 ```bash
-# Run with debug output
-ghostty --debug
-
-# Check configuration
-ghostty --config-check
-
-# Show version and features
-ghostty --version
+ghostty +show-config          # dump effective config
+ghostty +list-themes          # list available themes
+ghostty +list-actions         # list all keybind actions
+ghostty --version             # version + build info (channel: tip/stable)
 ```
+
+**D-Bus launch failure from app menu (KDE)**:
+
+1. `busctl --user list | grep -i ghostty` — if it shows `(activatable)` only, the name is NOT claimed.
+2. Ensure `gtk-single-instance = true` (not `detect`) in config; restart `systemctl --user restart app-com.mitchellh.ghostty`.
+3. Verify service files exist: `/usr/share/dbus-1/services/com.mitchellh.ghostty.service` + `/usr/share/systemd/user/app-com.mitchellh.ghostty.service`.
+
+**Theme not found** (Terra package): Terra doesn't bundle themes. Install from COPR or drop themes into `~/.config/ghostty/themes/`.
 
 ## Workflows
 
-### Development Workflow
-
-1. **Profile setup**: Create dev profile with larger font
-2. **Multiple tabs**: Use tabs for different contexts
-3. **Split panes**: Editor and terminal side-by-side
-4. **Quick actions**: Custom commands for common tasks
-
-### System Administration
-
-1. **Server profiles**: Multiple profiles for different servers
-2. **SSH integration**: Configure for remote work
-3. **Logging**: Enable command notifications
+1. **Setup**: theme + font-family + font-size + background-opacity + padding in one config.
+2. **Tabs/splits**: `super+t` new tab, `super+d`/`super+shift+d` splits, `super+[`/`]` navigate.
+3. **Quick terminal**: global `super+grave_accent` toggle for a quake-style drop-down.
+4. **SSH**: `ssh host` works natively; shell integration auto-injects over SSH.
