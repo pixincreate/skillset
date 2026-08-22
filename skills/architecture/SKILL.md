@@ -304,3 +304,5 @@ Before finalizing architecture:
 - **refactor-path** - For executing architectural changes safely
 - **problem-solving** - For trade-off analysis between architectural approaches
 - **brainstorming** - For creative design exploration before committing to architecture
+- **api-and-interface-design** - For the module/API contracts that realize the design
+- **domain-modeling** - For the glossary and ADRs that record these decisions

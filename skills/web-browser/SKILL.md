@@ -281,3 +281,9 @@ Before finalizing web research:
 - The most recent answer isn't always the right answer
 - Always verify before implementation
 - Context matters more than isolated code snippets
+
+## Related Skills
+
+- **research** - Structured investigation workflows
+- **terminal-tools** - Pairing browser and terminal tools
+- **slackdump** - Querying archived data instead of live fetches

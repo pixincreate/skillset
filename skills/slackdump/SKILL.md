@@ -279,3 +279,8 @@ slackdump workspace new <name>
 # Or disable encryption:
 slackdump -no-encryption workspace new <name>
 ```
+
+## Related Skills
+
+- **terminal-tools** - Terminal workflow around CLI tooling
+- **web-browser** - Live browsing when an archive is not enough

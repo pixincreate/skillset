@@ -191,3 +191,9 @@ From debugging session (2025-10-03):
 - All investigations completed concurrently
 - All fixes integrated successfully
 - Zero conflicts between agent changes
+
+## Related Skills
+
+- **planning** - Break work into dispatchable pieces first
+- **incremental-implementation** - Sequencing dependent changes after parallel work lands
+- **handoff** - Preserving context across agent sessions

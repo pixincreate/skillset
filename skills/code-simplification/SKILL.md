@@ -244,3 +244,9 @@ If a refactoring touches more than 500 lines, stop. Invest in automation — cod
 - [ ] Simplified code follows project conventions
 - [ ] No error handling was removed or weakened
 - [ ] No dead code left behind
+
+## Related Skills
+
+- **refactor-path** - For planning multi-step refactors safely
+- **simplicity-first** - The principles applied while simplifying
+- **code-quality-review** - Where complexity findings usually come from

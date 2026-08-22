@@ -300,3 +300,9 @@ Some security issues can't be fixed with a version bump:
 - [ ] Rate limiting active on auth endpoints
 - [ ] Server-side URL fetches validated against allowlist
 - [ ] LLM output validated and encoded before use
+
+## Related Skills
+
+- **testing** - Security cases belong in behavior tests
+- **diagnose** - Investigating suspected vulnerabilities
+- **observability-and-instrumentation** - Visibility for security-relevant events

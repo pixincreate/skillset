@@ -101,66 +101,102 @@ Skills are loaded on-demand — only the skill name and description are loaded a
 - **Use progressive disclosure** — reference supporting files that get read only when needed
 - **Prefer scripts over inline code** — script execution doesn't consume context (only output does)
 
+## House Style
+
+How skills here are written — and how this differs from other skill collections:
+
+| | This repo | e.g. mattpocock/skills |
+| ----- | ----------- | ----------- |
+| Activation | Frontmatter `triggers` list; each skill stands alone | Narrative prompts, often activated by other skills |
+| Coupling | Self-contained; no required companion setup | Ecosystem-coupled (triage → to-spec → to-tickets → implement chain) |
+| Structure | One SKILL.md, flat sections | Progressive disclosure with bundled reference files |
+| Families | Similar skills clubbed via `## Related Skills` cross-links | Skills reference a shared personal workflow |
+| Scope | Broad: dev, review, comms, tooling, agent-meta | Dev-workflow centric |
+
+Every skill follows the same shape: YAML frontmatter (`name`, `description`, `triggers`), body sections, and a **Related Skills** footer that clubs it into its family (planning/process, architecture/domain, verification, review pipeline, design, communication, tooling) so adjacent skills point at each other instead of duplicating content.
+
 ## Skills
 
-### Terminal & Tools
+### Planning & Process
 
 | Skill | Description |
 | ----- | ----------- |
-| `terminal-tools/` | Terminal productivity: tmux, starship, ghostty, zed |
-| `slackdump/` | Archive, dump, and query Slack workspace data |
-| `web-browser/` | Web browsing and interaction |
+| `planning/` | Mandatory plan-first workflow before any implementation |
+| `brainstorming/` | Explore intent, requirements, and design before creative work |
+| `rapidfire/` | Blunt feedback mode + one-question-at-a-time alignment interview |
+| `spec-writer/` | Templates and checklists for specs, PRDs, RFCs |
+| `spec-enforcement/` | Documentation, linting, formatting after code changes |
+| `incremental-implementation/` | Deliver multi-file changes in vertical slices |
+| `refactor-path/` | Step-by-step path from current state to target state |
+| `safe-pr/` | Prevent flow-breaking mistakes on shared/critical paths |
+| `doubt-driven-development/` | Fresh-context adversarial review of key decisions |
+| `problem-solving/` | Systematic approach to complex technical challenges |
+| `simplicity-first/` | Minimum code, surgical edits, explicit assumptions |
+| `source-driven-development/` | Ground decisions in official documentation |
+| `learning-log/` | Capture learned patterns, anti-patterns, insights |
+
+### Architecture & Domain
+
+| Skill | Description |
+| ----- | ----------- |
+| `architecture/` | System design, SOLID patterns, trade-off analysis |
+| `api-and-interface-design/` | Stable API and module boundary contracts |
+| `domain-modeling/` | Shared-language glossary (CONTEXT.md) + ADR discipline |
+| `zoom-out/` | Higher-level map of an unfamiliar module's callers/context |
 
 ### Development
 
 | Skill | Description |
 | ----- | ----------- |
-| `architecture/` | Software architecture and system design |
-| `debugging/` | Systematic debugging including root cause analysis |
-| `testing/` | Testing patterns including TDD |
-| `problem-solving/` | Systematic problem solving |
-| `research/` | Technical research and codebase exploration |
-| `spec-enforcement/` | Verify implementation matches spec |
-| `behavior-validation/` | Test behavior against requirements |
-| `codebase-exploration/` | Understand unfamiliar codebases |
+| `codebase-exploration/` | Map structure, dependencies; creates CLAUDE.md |
+| `research/` | Tech evaluation, APIs, external docs investigation |
+| `testing/` | Behavior-focused tests and TDD red-green-refactor |
+| `behavior-validation/` | Verify against running systems: services, HTTP, E2E |
+| `diagnose/` | Debugging discipline: quick path + full 6-phase loop |
+| `resolving-merge-conflicts/` | Resolve merge/rebase conflicts by traced intent |
+| `security-and-hardening/` | Harden input handling, auth, storage, integrations |
+| `observability-and-instrumentation/` | Logging, metrics, tracing for production visibility |
+| `context-engineering/` | Configure project-aware agent context |
+| `code-simplification/` | Refactor for clarity without changing behavior |
 
-### Code Quality & Review
-
-| Skill | Description |
-| ----- | ----------- |
-| `code-quality-review/` | Code quality and security reviews |
-| `code-change-review/` | Review code changes systematically |
-| `github-review-publisher/` | Publishing GitHub PR reviews |
-| `pr-analysis/` | Pull request analysis |
-| `misc/` | General development practices |
-
-### Planning & Collaboration
+### Code Review & PRs
 
 | Skill | Description |
 | ----- | ----------- |
-| `planning/` | Requirements and writing plans |
-| `brainstorming/` | Creative exploration before implementation |
-| `collaboration/` | Team collaboration practices |
-| `dispatching-parallel-agents/` | Running parallel agent tasks |
-| `spec-writer/` | Writing clear technical specifications |
-| `refactor-path/` | Safe incremental refactoring strategies |
-| `safe-pr/` | PR hygiene and safe merge practices |
-| `learning-log/` | Capture and retain learnings |
-| `rapidfire/` | Quick iterative decision making |
+| `code-quality-review/` | Heavyweight review: scoring, severity, line numbers |
+| `code-change-review/` | Lightweight surgical change review |
+| `github-review-publisher/` | Publish structured GitHub PR review comments |
+| `pr-analysis/` | Fetch and analyze pull request data |
 
-### Frontend & Design
+### Design & Frontend
 
 | Skill | Description |
 | ----- | ----------- |
-| `frontend-design/` | UI/UX: guidelines, interfaces, creative implementation |
-| `interface-design/` | High-level interface design philosophy |
-| `web-design-guidelines/` | Web interface guidelines |
+| `frontend-design/` | Distinctive, production-grade frontend interfaces |
+| `interface-design/` | Product interfaces: dashboards, apps, tools |
+| `web-design-guidelines/` | Audit UI against web interface guidelines |
+| `remotion-best-practices/` | Video creation in React with Remotion |
 
 ### Communication
 
 | Skill | Description |
 | ----- | ----------- |
-| `slack-voice/` | Slack communication tone and style |
+| `caveman/` | Ultra-compressed communication mode |
+| `slack-voice/` | Translate casual messages into polished Slack tone |
+| `collaboration/` | Team collaboration and feedback practices |
+| `handoff/` | Compact a conversation into a continuation document |
+| `wait-what/` | Re-pitch a message that didn't land, in plain language |
+
+### Tools & Utilities
+
+| Skill | Description |
+| ----- | ----------- |
+| `terminal-tools/` | tmux, starship, ghostty, zed, wezterm configuration |
+| `slackdump/` | Archive and query Slack workspace data via SQLite |
+| `web-browser/` | Web search, navigation, content interaction |
+| `prototype/` | Throwaway demos that answer one design question |
+| `dispatching-parallel-agents/` | Orchestrate parallel background agents |
+| `write-a-skill/` | Create new skills with proper structure |
 
 ## Uninstallation
 

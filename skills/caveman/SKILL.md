@@ -71,3 +71,9 @@ Example -- destructive op:
 > ```
 >
 > Caveman resume. Verify backup exist first.
+
+## Related Skills
+
+- **slack-voice** - The opposite direction: expanding casual messages into polished prose
+- **collaboration** - When full sentences matter more than brevity
+- **wait-what** - When compressed output confused the reader

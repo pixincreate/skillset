@@ -492,3 +492,9 @@ Often the best design combines insights from multiple options. Ask:
 - Don't skip comparison — the value is in contrast
 - Don't implement — this is purely about interface shape
 - Don't evaluate based on implementation effort
+
+## Related Skills
+
+- **frontend-design** - Visual craft and production-grade implementation
+- **web-design-guidelines** - Compliance audit for shipped interfaces
+- **prototype** - Answering open product questions with throwaway demos

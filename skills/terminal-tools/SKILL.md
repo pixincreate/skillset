@@ -387,3 +387,8 @@ Toggle with `` Ctrl+` ``. Full terminal pane — works with tmux inside it.
 - **Starship in tmux**: works natively; set `add_newline = false` in starship config to reduce noise in narrow panes
 - **Zed terminal + tmux**: open Zed's built-in terminal, attach to existing tmux session
 - **256 colors**: set `TERM=xterm-256color` outside tmux, `default-terminal "tmux-256color"` inside
+
+## Related Skills
+
+- **slackdump** - CLI-based Slack archive tooling
+- **web-browser** - Browser automation alongside terminal tools

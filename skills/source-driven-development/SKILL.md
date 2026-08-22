@@ -172,3 +172,9 @@ Citation rules:
 - [ ] No deprecated APIs used
 - [ ] Docs-vs-codebase conflicts surfaced to user
 - [ ] Unverifiable patterns flagged explicitly
+
+## Related Skills
+
+- **research** - Gathering authoritative sources first
+- **simplicity-first** - Minimal implementation once grounded
+- **testing** - Proving the documented behavior

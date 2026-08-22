@@ -88,3 +88,9 @@ This skill takes frustrated, messy, or casual messages and translates them into:
 - One blank line between paragraphs if multiple
 - Emoji are fine in small amounts (thumbs up, eyes, checkmark) - but not required
 - No bullet points unless absolutely necessary, and keep them short
+
+## Related Skills
+
+- **caveman** - Compression mode when terseness is wanted instead
+- **collaboration** - Team communication norms
+- **wait-what** - Re-pitching when the first message missed

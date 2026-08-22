@@ -557,3 +557,9 @@ Could you wait until others finish before jumping in?
 - Celebrate team wins
 - Continuous improvement
 - Empathy and respect are foundational
+
+## Related Skills
+
+- **slack-voice** - Polishing messages for team channels
+- **caveman** - When to drop brevity for clarity
+- **learning-log** - Recording what the team taught you

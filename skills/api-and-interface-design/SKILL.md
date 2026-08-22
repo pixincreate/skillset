@@ -256,3 +256,9 @@ function getTask(id: TaskId): Promise<Task> { ... }
 - [ ] New fields are additive and optional (backward compatible)
 - [ ] Naming conventions are consistent across all endpoints
 - [ ] Types/contracts committed alongside implementation
+
+## Related Skills
+
+- **architecture** - For the system context these contracts live in
+- **domain-modeling** - For canonical terms used in API names
+- **codebase-exploration** - For mapping existing interfaces first

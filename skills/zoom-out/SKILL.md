@@ -89,5 +89,6 @@ If you genuinely can't figure out the broader structure:
 ## Related Skills
 
 - **codebase-exploration** - For full structural documentation (creates CLAUDE.md files)
+- **domain-modeling** - Maintains the CONTEXT.md glossary this skill reads for naming and terms
 - **research** - For broader research including tech evaluation, APIs, external docs
 - **architecture** - For system-level design decisions

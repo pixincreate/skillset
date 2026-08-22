@@ -202,3 +202,9 @@ Instrumentation is code; it can be wrong. Before calling it done:
 - [ ] A single request can be followed end-to-end in tracing without broken spans
 - [ ] Every new alert is symptom-based, has a runbook link, and was test-fired once
 - [ ] An induced failure in staging was located via telemetry alone, without reading the source
+
+## Related Skills
+
+- **behavior-validation** - Verifying instrumented flows against running systems
+- **testing** - Unit-level verification complements telemetry
+- **security-and-hardening** - Audit trails for security-relevant events

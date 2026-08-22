@@ -70,3 +70,8 @@ When a user provides a file or pattern argument:
 4. Output findings using the format specified in the guidelines
 
 If no files specified, ask the user which files to review.
+
+## Related Skills
+
+- **frontend-design** - Fixing violations found in review
+- **interface-design** - The design philosophy behind the guidelines

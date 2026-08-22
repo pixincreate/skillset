@@ -71,3 +71,10 @@ cat frontend-design/reference/interfaces.md
 3. **Animation** - Respect prefers-reduced-motion, use compositor-friendly properties
 4. **Typography** - Use proper punctuation, text-wrap utilities
 5. **Performance** - Optimize images, virtualize large lists
+
+## Related Skills
+
+- **interface-design** - Product-interface philosophy behind visual choices
+- **web-design-guidelines** - Audit finished UI against interface guidelines
+- **prototype** - Throwaway demos for open design questions
+- **remotion-best-practices** - For video UI in React

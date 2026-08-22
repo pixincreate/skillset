@@ -286,3 +286,8 @@ Before completing PR analysis:
 - Provide structured output for downstream skills
 - Include all metadata needed for review workflow
 - Flag new connectors as security-sensitive by default
+
+## Related Skills
+
+- **github-review-publisher** - Publishing review comments from the analysis
+- **code-quality-review** - Deep quality review of fetched diffs

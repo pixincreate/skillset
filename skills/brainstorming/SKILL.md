@@ -128,3 +128,4 @@ digraph brainstorming {
 - **planning** - After brainstorming design is approved, use planning for implementation planning and gatekeeping
 - **rapidfire** - For deep alignment when requirements are fundamentally unclear
 - **architecture** - For large-scale system design decisions
+- **prototype** - When a design question is best answered by a throwaway demo instead of discussion

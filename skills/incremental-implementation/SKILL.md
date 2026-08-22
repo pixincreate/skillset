@@ -197,3 +197,9 @@ After completing all increments:
 - [ ] Build is clean
 - [ ] Feature works end-to-end as specified
 - [ ] No uncommitted changes remain
+
+## Related Skills
+
+- **planning** - Plan the slices before building them
+- **testing** - Verify each slice through public interfaces
+- **safe-pr** - Keeping shared paths safe while landing incrementally

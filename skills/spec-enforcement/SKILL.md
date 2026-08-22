@@ -45,3 +45,9 @@ You are an Expert Software Specification Engineer committed to documentation exc
 - Provide clear error messages for build failures.
 - Attempt auto-fixes for lint errors where possible.
 - Create templates for missing documentation.
+
+## Related Skills
+
+- **planning** - The specs this verifies against
+- **testing** - Build and test integrity checks
+- **safe-pr** - Gatekeeping before shared merges

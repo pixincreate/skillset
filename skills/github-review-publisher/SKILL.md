@@ -403,3 +403,9 @@ gh pr view {pr} --repo {owner}/{repo} --json reviewComments
 - Backward compatible with old issue formats
 - Format with severity emojis for quick scanning
 - Always explain the impact of critical issues
+
+## Related Skills
+
+- **code-quality-review** - Produces the structured issues this publishes
+- **pr-analysis** - Fetching PR data and line numbers
+- **safe-pr** - Preventing the flow-breakers reviews catch

@@ -194,3 +194,9 @@ Pattern: webhook verification first, then idempotency check
 - [ ] Agent output matches patterns from rules file
 - [ ] Agent references actual project code (not hallucinated)
 - [ ] Context refreshed when switching major features
+
+## Related Skills
+
+- **codebase-exploration** - Produces the CLAUDE.md files this skill builds context around
+- **zoom-out** - Orientation before setting project rules
+- **write-a-skill** - When a recurring pattern deserves its own skill

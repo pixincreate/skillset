@@ -189,3 +189,9 @@ Workaround: Always use map(() => ({...item})) to copy first
 - Monthly: Review and prune stale entries
 - Quarterly: Identify patterns across entries
 - Onboarding: Share relevant entries with new team members
+
+## Related Skills
+
+- **research** - Feeding investigated findings into durable lessons
+- **codebase-exploration** - Structural insights worth logging
+- **collaboration** - Sharing patterns with the team

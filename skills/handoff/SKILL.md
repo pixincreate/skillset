@@ -110,3 +110,8 @@ Tell the user:
 1. Where the handoff file was saved (absolute path)
 2. What the key next steps are
 3. How to use it: "In your next session, say 'continue from this handoff' and provide the file path"
+
+## Related Skills
+
+- **planning** - Plans make strong handoff inputs
+- **dispatching-parallel-agents** - Handing work between agent sessions
